@@ -1,0 +1,148 @@
+---
+title: "MA 331 homework 2"
+author: "Josh Gribbon"
+output:
+  html_document: default
+  pdf_document: default
+fig_width: 4
+fig_height: 3
+geometry: margin=2cm
+---
+###Part 1
+**Data**
+
+Assume that N has Binomial distribution with number of trials n and probability of success p=0.4.
+
+####(i) For n=20, 30, 50 and 100, accurately compute P(N<=8.25) by using R function
+```{r}
+i_vals <- c()
+sizes <- c(20, 30, 50, 100)
+for(i in sizes){
+  v <- pbinom(8.25, size=i, prob=0.4)
+  i_vals <- c(i_vals, v)
+  cat("n=", i, " : ", v, '\n')
+}
+```
+
+####(ii) For n=20, 30, 50 and 100, compute P(N<=8.25) by using normal approximation through Laplace theorem
+```{r}
+p <- 0.4
+q <- 1-p
+mu_fn <- function(n, p){return (n*p)}
+sd_fn <- function(n, p, q){return(sqrt(n*p*q))}
+ii_vals <- c()
+
+for(i in sizes){
+  v <- pnorm(8.25, mean=mu_fn(i, p), sd=sd_fn(i, p, q))
+  ii_vals <- c(ii_vals, v)
+  cat("n=", i, " : ", v, '\n')
+}
+```
+
+####(iii) Evaluate and plot errors of all approximation in (ii)
+```{r}
+p_err <- function(meas, act){return(abs((meas-act)/act))}
+errs <- c()
+diffs <- c()
+
+for(i in 1:length(sizes)){
+  measured = ii_vals[i]
+  actual = i_vals[i]
+  n = sizes[i]
+  err <- p_err(measured, actual)
+  errs <- c(errs, err)
+  diff <- abs(actual-measured)
+  diffs <- c(diffs, diff)
+  cat("n=", n, ':', p_err(measured, actual)*100, "% error\n")
+}
+```
+```{r, fig.width=4, fig.height=3, fig.show="hold"}
+plot(
+  sizes, errs,
+  main="Sample size VS Percent error"
+)
+plot(
+  sizes, diffs,
+  main="Sample size VS Value error"
+)
+```
+
+####(iv) What do you perceive based on the plot
+As the sample size increases, amount of error decreases but the percent error increases
+
+###Part 2
+
+**Data**
+
+By using R function generate a simple and random sample of size n for the population X having normal distribution with mean 2 and variance $3^2$
+```{r}
+m <- 2
+v <- 3^2
+srs <- function(n){
+  return(rnorm(n, mean=m, sd=sqrt(v)))
+}
+```
+
+####(i) Let n=20, compute $(\bar{x}-2)/ \sqrt{3^2 /n}$ and $(n-1)S^2/3^2$ . Then, repeat (i) for 100 times and plot $(\bar{x}-2)/ \sqrt{3^2 /n}$ and $(n-1)S^2/3^2$ , respectively.
+```{r}
+n <- 20
+norm_mean <- function(X){return((mean(X)-2)/sqrt(v/n))}
+chisq_mean <- function(X){
+  xbar <- mean(X)
+  s <- 0
+  for(i in 1:n){s <- s+(X[i]-xbar)^2}
+  S_sqr <- (1/(n-1)) * s
+  return(((n-1)*S_sqr)/v)
+}
+samp <- srs(n)
+norm_mean(samp)
+chisq_mean(samp)
+```
+```{r, fig.width=4, fig.height=3, fig.show="hold"}
+ns <- c()
+cs <- c()
+for(i in 1:100){
+  samp <- srs(n)
+  ns <- c(ns, norm_mean(samp))
+  cs <- c(cs, chisq_mean(samp))
+}
+hist(ns)
+hist(cs)
+```
+
+
+####(ii) For n=30, repeat (i) for 100 times and plot $(\bar{x}-2)/ \sqrt{3^2 /n}$ and $(n-1)S^2/3^2$ 
+
+```{r, fig.width=4, fig.height=3, fig.show="hold"}
+n <- 30
+ns <- c()
+cs <- c()
+for(i in 1:100){
+  samp <- srs(n)
+  ns <- c(ns, norm_mean(samp))
+  cs <- c(cs, chisq_mean(samp))
+}
+hist(ns)
+hist(cs)
+```
+
+####(iii) For n=50, repeat (i) for 100 times and plot $(\bar{x}-2)/ \sqrt{3^2 /n}$ and $(n-1)S^2/3^2$ 
+
+```{r, fig.width=4, fig.height=3, fig.show="hold"}
+n <- 50
+ns <- c()
+cs <- c()
+for(i in 1:100){
+  samp <- srs(n)
+  ns <- c(ns, norm_mean(samp))
+  cs <- c(cs, chisq_mean(samp))
+}
+hist(ns)
+hist(cs)
+```
+
+####(iv) Describe your findings based on plots in (i), (ii) and (iii).
+
+As sample size increases:
+* The normal distribution keeps the same mean and decreases in standard deviation showing that as sample size increases we get more confident in our mean estimation
+* The chi-squared distribution gets a larger mean, I believe showing that as sample size increases we get less confident in our variance estimation

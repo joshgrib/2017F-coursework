@@ -1,0 +1,11 @@
+start       INP                 //get hw count
+            BRP hwPresent       //handle if we have hw
+            BRA lying           //if you say no you're lying
+lying       BRA hwPresent       //if lying then move on
+hwPresent   INP                 //1 for hw due in < 12 hrs, 0 otherwise
+            BRP startWork       //if hw due soon then do it
+            BRA watchTV         //if not due soon then watch TV
+watchTV     BRA playGames       //after watching TV then play games
+playGames   BRA facebook        //after playing games go to facebook
+facebook    BRA hwPresent       //after facebook check on your hw again
+startWork   HLT                 //do hw - end program
