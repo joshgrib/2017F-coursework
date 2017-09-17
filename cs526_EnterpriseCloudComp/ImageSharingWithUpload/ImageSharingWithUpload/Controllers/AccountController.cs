@@ -53,6 +53,7 @@ namespace ImageSharingWithUpload.Controllers
 
             ViewBag.UserID = UserID;
             ViewBag.ADA = ADA;
+            ViewBag.isADA = ADA;
             return View("RegisterPost");
         }
     }

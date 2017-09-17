@@ -25,11 +25,29 @@ namespace ImageSharingWithUpload.Controllers
             }
         }
 
-        public ActionResult Index(String userID="stranger")
+        public ActionResult Index(String userID=null)
         {
             CheckAda();
             ViewBag.title = "Welcome!";
-            ViewBag.userID = userID;
+
+            if (userID == null)
+            {
+                HttpCookie cookie = Request.Cookies.Get("ImageSharing");
+                if (cookie != null)
+                {
+                    ViewBag.userID = cookie["UserID"];
+                    ViewBag.welcomeMsg = "Click 'Upload' to add one of your images, or 'Query' to search for an image.";
+                }
+                else
+                {
+                    ViewBag.userID = "stranger";
+                    ViewBag.welcomeMsg = "Click 'Register' above to join the site!";
+                }
+            }else
+            {
+                ViewBag.userID = userID;
+                ViewBag.welcomeMsg = "Click 'Upload' to add one of your images, or 'Query' to search for an image.";
+            }
             return View();
         }
 

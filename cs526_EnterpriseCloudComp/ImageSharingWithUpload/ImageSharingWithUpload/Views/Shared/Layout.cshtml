@@ -13,10 +13,14 @@
     *@
 
     @{ 
-        var SiteCss = (ViewBag.isADA ?? false) ? "Site_ADA.css" : "Site.css";
-        var SiteCssUrl = Url.Content("~/Content/" + SiteCss);
+        var ADACss = (ViewBag.isADA ?? false) ? "Site_ADA.css" : "Site_nonADA.css";
+        var ADACssUrl = Url.Content("~/Content/" + ADACss);
+        var SiteCssUrl = Url.Content("~/Content/common.css");
     }
+    <link href="@ADACssUrl" rel="stylesheet" type="text/css" />
     <link href="@SiteCssUrl" rel="stylesheet" type="text/css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Pacifico|Roboto" rel="stylesheet">
 
     @*
     @Scripts.Render("~/bundles/modernizr")
@@ -27,15 +31,15 @@
 
 <body class="twoColumnHdrFtr">
     <div id="container">
-        <header id="header">
+        <header id="header" class="fancy-text">
             <h1><img alt="[Jive Talkin' Choirboy]" src="@Url.Content("~/Content/Images/jive-talkin-choirboy.png")" /></h1>
         </header>
-        
+
         <nav id="nav">
             <ul>
-                <li>@Html.ActionLink("Register","Register")</li>
-                <li>@Html.ActionLink("Upload","Upload")</li>
-                <li>@Html.ActionLink("Query","Query")</li>
+                <li>@Html.ActionLink("Register","Register", "Account")</li>
+                <li>@Html.ActionLink("Upload","Upload", "Home")</li>
+                <li>@Html.ActionLink("Query","Query", "Home")</li>
             </ul>
         </nav>
         
