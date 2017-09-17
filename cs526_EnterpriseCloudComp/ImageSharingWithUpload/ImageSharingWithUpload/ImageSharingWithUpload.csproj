@@ -191,14 +191,13 @@
     <Content Include="Views\Shared\Layout.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\RegisterPost.cshtml" />
-    <Content Include="Views\Home\Upload.cshtml" />
-    <Content Include="Views\Home\UploadSuccess.cshtml" />
-    <Content Include="Views\Home\Query.cshtml" />
-    <Content Include="Views\Home\QuerySuccess.cshtml" />
+    <Content Include="Views\Images\Upload.cshtml" />
+    <Content Include="Views\Images\UploadSuccess.cshtml" />
+    <Content Include="Views\Images\Query.cshtml" />
+    <Content Include="Views\Images\QuerySuccess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Image_Info\" />
-    <Folder Include="Views\Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

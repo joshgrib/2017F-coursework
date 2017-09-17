@@ -20,7 +20,7 @@
     <link href="@ADACssUrl" rel="stylesheet" type="text/css" />
     <link href="@SiteCssUrl" rel="stylesheet" type="text/css" />
 
-    <link href="https://fonts.googleapis.com/css?family=Pacifico|Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico|Roboto|Bungee+Shade" rel="stylesheet">
 
     @*
     @Scripts.Render("~/bundles/modernizr")
@@ -32,16 +32,22 @@
 <body class="twoColumnHdrFtr">
     <div id="container">
         <header id="header" class="fancy-text">
+            <!--
             <h1><img alt="[Jive Talkin' Choirboy]" src="@Url.Content("~/Content/Images/jive-talkin-choirboy.png")" /></h1>
+                -->
+            <h1 class="title-text">CS-526 Image Sharing Website</h1>
         </header>
+        <hr class="fancy-rule" />
 
         <nav id="nav">
             <ul>
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
                 <li>@Html.ActionLink("Register","Register", "Account")</li>
-                <li>@Html.ActionLink("Upload","Upload", "Home")</li>
-                <li>@Html.ActionLink("Query","Query", "Home")</li>
+                <li>@Html.ActionLink("Upload","Upload", "Images")</li>
+                <li>@Html.ActionLink("Query","Query", "Images")</li>
             </ul>
         </nav>
+        <hr class="fancy-rule" />
         
         <aside id="sidebar">
             <h1>Links</h1>
