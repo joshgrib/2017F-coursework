@@ -21,7 +21,7 @@ body {
     font-family: 'Bungee Shade';
 }
 
-hr.fancy-rule {
+hr {
     height: 1px;
     color: var(--dark);
     background: var(--dark);
@@ -33,10 +33,10 @@ hr.fancy-rule {
 a:link, a:visited {
     text-decoration: none;
     color: var(--darkest);
-    padding: 10px 15px;
     text-align: center;
-    display: inline-block;
     background-color: var(--lightest);
+    padding: 10px 15px;
+    display: inline-block;
 }
 a:hover, a:active {
     background-color: var(--light);
@@ -72,7 +72,16 @@ a:hover, a:active {
 
     .twoColumnHdrFtr #sidebar h1 {
         font-size: 100%;
+        text-align: center;
     }
+
+    .twoColumnHdrFtr #sidebar p {
+        overflow:auto;
+    }
+        .twoColumnHdrFtr #sidebar a {
+            float:left;
+            width:150px;
+        }
 
 #nav {
     padding: 5px 10px;

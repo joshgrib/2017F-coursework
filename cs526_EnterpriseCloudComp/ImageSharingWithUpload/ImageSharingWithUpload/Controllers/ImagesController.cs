@@ -36,7 +36,16 @@ namespace ImageSharingWithUpload.Controllers
         public ActionResult Upload()
         {
             CheckAda();
-            return View();
+
+            HttpCookie cookie = Request.Cookies.Get("ImageSharing");
+            if (cookie == null)
+            {
+                return RedirectToAction("Register", "Account");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         [HttpPost, ActionName("Upload")]
@@ -62,9 +71,16 @@ namespace ImageSharingWithUpload.Controllers
 
                     if (ImageFile != null && ImageFile.ContentLength > 0)
                     {
-                        String imgFileName = Server.MapPath("~/Content/Images/" + image.ID + ".jpg");
-                        ImageFile.SaveAs(imgFileName);
-                        System.IO.File.WriteAllText(fileName, jsonData);
+                        try
+                        {
+                            String imgFileName = Server.MapPath("~/Content/Images/" + image.ID + ".jpg");
+                            ImageFile.SaveAs(imgFileName);
+                            System.IO.File.WriteAllText(fileName, jsonData);
+                        } catch (Exception e)
+                        {
+                            return RedirectToAction("Error", "Home", new { msg=e.Message });
+                        }
+                        
                     }
 
                     ViewBag.Message = "";
@@ -89,20 +105,37 @@ namespace ImageSharingWithUpload.Controllers
         {
             CheckAda();
             ViewBag.Message = "";
-            return View();
+
+            HttpCookie cookie = Request.Cookies.Get("ImageSharing");
+            if (cookie == null)
+            {
+                return RedirectToAction("Register", "Account");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         [HttpGet]
-        public ActionResult DoQuery(String Id)
+        public ActionResult Details(String Id)
         {
             String fileName = Server.MapPath("~/App_Data/Image_Info/" + Id + ".js");
             if (System.IO.File.Exists(fileName))
             {
-                String jsonData = System.IO.File.ReadAllText(fileName);
-                JavaScriptSerializer serializer = new JavaScriptSerializer();
-                Image image = serializer.Deserialize<Image>(jsonData);
+                try
+                {
+                    String jsonData = System.IO.File.ReadAllText(fileName);
+                    JavaScriptSerializer serializer = new JavaScriptSerializer();
+                    Image image = serializer.Deserialize<Image>(jsonData);
 
-                return View("QuerySuccess", image);
+                    return View("QuerySuccess", image);
+                }
+                catch (Exception e)
+                {
+                    return RedirectToAction("Error", "Home", new { msg = e.Message });
+                }
+                
             }
             else
             {

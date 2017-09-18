@@ -1,0 +1,1 @@
+{"ID":"demo_image","Caption":"My demonstration","Description":"This is for the video for the assignment","DateTaken":"\/Date(1505631600000)\/","UserID":"testuser"}

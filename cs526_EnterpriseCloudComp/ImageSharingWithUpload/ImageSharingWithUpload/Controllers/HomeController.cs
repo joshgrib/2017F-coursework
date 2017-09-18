@@ -50,5 +50,19 @@ namespace ImageSharingWithUpload.Controllers
             }
             return View();
         }
+
+        public ActionResult Error(String msg = "Error information unavailable.")
+        {
+            CheckAda();
+            ViewBag.Title = "Error";
+            ViewBag.Message = msg;
+            return View();
+        }
     }
 }
+
+/*
+ * Student name:
+ * Josh Gribbon
+ * 
+ */
