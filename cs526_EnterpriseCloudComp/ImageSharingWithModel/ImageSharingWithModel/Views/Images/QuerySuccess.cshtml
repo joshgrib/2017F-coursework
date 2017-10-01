@@ -1,0 +1,19 @@
+﻿@model ImageSharingWithModel.Models.Image
+
+@{
+    ViewBag.Title = "Image Details";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p><img src="@Url.Content("~/Content/Images/" + @Model.ID + ".jpg")"</p>
+
+<p>Image id: @Model.ID </p>
+
+<p>Caption: @Model.Caption </p>
+
+<p>Description: <br />@Model.Description </p>
+
+<p>Date Taken: @Model.DateTaken.ToShortDateString() </p>
+
+<p>Uploader: @Model.UserID </p>
