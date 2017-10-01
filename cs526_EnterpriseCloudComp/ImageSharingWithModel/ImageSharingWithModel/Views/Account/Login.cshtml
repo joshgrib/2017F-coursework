@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Login";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@{ Html.BeginForm("DoLogin", "Accounts", FormMethod.Get); }
+
+<fieldset>
+    <legend>Enter Your User ID</legend>
+    <p>
+        User ID: @Html.TextBox("UserID")
+    </p>
+    <p>
+        <input type="submit" value="Login" />
+    </p>
+</fieldset>
+
+@ViewBag.Message
+
+@{ Html.EndForm(); }

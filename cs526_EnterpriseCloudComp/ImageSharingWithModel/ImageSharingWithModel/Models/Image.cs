@@ -4,25 +4,30 @@ using System.Linq;
 using System.Web;
 
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ImageSharingWithModel.Models
 {
     public class Image
+        /*
+         * Entity model for an image
+         */
     {
-        [Required]
-        [RegularExpression(@"[a-zA-z0-9_]+")]
-        public String ID { get; set; }
-        [Required]
-        [StringLength(40)]
-        public String Caption { get; set; }
-        [Required]
-        [StringLength(200)]
-        public String Description { get; set; }
-        [Required]
-        [DataType(DataType.Date)]
-        public DateTime DateTaken { get; set; }
-        public String UserID { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public virtual int Id { get; set; }
+        [MaxLength(40)]
+        public virtual string Caption { get; set; }
+        [MaxLength(200)]
+        public virtual string Description { get; set; }
+        [DisplayFormat(DataFormatString="{0:d}")]
+        public virtual DateTime DateTaken { get; set; }
 
-        public Image() { }
+        [ForeignKey("User")]
+        public virtual int UserId { get; set; }
+        public virtual User User { get; set; }
+        [ForeignKey("Tag")]
+        public virtual int TagId { get; set; }
+        public virtual Tag Tag { get; set; }
     }
 }

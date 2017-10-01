@@ -11,21 +11,8 @@ using ImageSharingWithModel.Models;
 
 namespace ImageSharingWithModel.Controllers
 {
-    public class ImagesController : Controller
+    public class ImagesController : BaseController
     {
-        protected void CheckAda()
-        {
-            HttpCookie cookie = Request.Cookies.Get("ImageSharing");
-            if (cookie != null)
-            {
-                ViewBag.isADA = "true".Equals(cookie["ADA"]);
-            }
-            else
-            {
-                ViewBag.isADA = false;
-            }
-        }
-
         // GET: Images
         public ActionResult Index()
         {
@@ -49,7 +36,7 @@ namespace ImageSharingWithModel.Controllers
         }
 
         [HttpPost, ActionName("Upload")]
-        public ActionResult UploadPost(Image image,
+        public ActionResult UploadPost(ImageView image,
                                        HttpPostedFileBase ImageFile)
         {
             CheckAda();
@@ -121,6 +108,7 @@ namespace ImageSharingWithModel.Controllers
         [HttpGet]
         public ActionResult Details(String Id)
         {
+            CheckAda();
             String fileName = Server.MapPath("~/App_Data/Image_Info/" + Id + ".js");
             if (System.IO.File.Exists(fileName))
             {
@@ -128,7 +116,7 @@ namespace ImageSharingWithModel.Controllers
                 {
                     String jsonData = System.IO.File.ReadAllText(fileName);
                     JavaScriptSerializer serializer = new JavaScriptSerializer();
-                    Image image = serializer.Deserialize<Image>(jsonData);
+                    ImageView image = serializer.Deserialize<ImageView>(jsonData);
 
                     return View("QuerySuccess", image);
                 }
