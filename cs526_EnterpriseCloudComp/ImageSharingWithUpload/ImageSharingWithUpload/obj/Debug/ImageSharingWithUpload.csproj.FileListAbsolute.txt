@@ -1,0 +1,134 @@
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\ApplicationInsights.config
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\csc.exe
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\csc.exe.config
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\csc.rsp
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\csi.exe
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\csi.rsp
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\Microsoft.CodeAnalysis.dll
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\Microsoft.CSharp.Core.targets
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\Microsoft.VisualBasic.Core.targets
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\System.AppContext.dll
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\System.Collections.Immutable.dll
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\System.Diagnostics.StackTrace.dll
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\System.IO.FileSystem.dll
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\System.IO.FileSystem.Primitives.dll
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\System.Reflection.Metadata.dll
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\vbc.exe
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\vbc.exe.config
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\vbc.rsp
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\VBCSCompiler.exe
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\VBCSCompiler.exe.config
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\ImageSharingWithUpload.dll.config
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\ImageSharingWithUpload.dll
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\ImageSharingWithUpload.pdb
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\Antlr3.Runtime.dll
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\Microsoft.AI.Agent.Intercept.dll
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\Microsoft.AI.DependencyCollector.dll
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\Microsoft.AI.PerfCounterCollector.dll
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\Microsoft.AI.ServerTelemetryChannel.dll
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\Microsoft.AI.Web.dll
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\Microsoft.AI.WindowsServer.dll
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\Microsoft.ApplicationInsights.dll
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\Microsoft.Web.Infrastructure.dll
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\Newtonsoft.Json.dll
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\System.Web.Helpers.dll
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\System.Web.Mvc.dll
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\System.Web.Optimization.dll
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\System.Web.Razor.dll
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\System.Web.WebPages.Deployment.dll
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\System.Web.WebPages.dll
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\System.Web.WebPages.Razor.dll
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\WebGrease.dll
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\System.Web.Helpers.xml
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\System.Web.Mvc.xml
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\System.Web.Optimization.xml
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\System.Web.Razor.xml
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\System.Web.WebPages.xml
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\System.Web.WebPages.Deployment.xml
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\System.Web.WebPages.Razor.xml
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\Antlr3.Runtime.pdb
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\Newtonsoft.Json.xml
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\Microsoft.ApplicationInsights.xml
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\Microsoft.AI.DependencyCollector.xml
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\Microsoft.AI.ServerTelemetryChannel.xml
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\Microsoft.AI.WindowsServer.xml
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\bin\Microsoft.AI.Web.xml
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\obj\Debug\ImageSharingWithUpload.csprojResolveAssemblyReference.cache
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\obj\Debug\ImageSharingWithUpload.dll
+c:\users\user\documents\visual studio 2017\Projects\ImageSharingWithUpload\ImageSharingWithUpload\obj\Debug\ImageSharingWithUpload.pdb
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\ApplicationInsights.config
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\csc.exe
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\csc.exe.config
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\csc.rsp
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\csi.exe
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\csi.rsp
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\System.AppContext.dll
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\vbc.exe
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\vbc.exe.config
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\vbc.rsp
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\VBCSCompiler.exe
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\ImageSharingWithUpload.dll.config
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\ImageSharingWithUpload.dll
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\ImageSharingWithUpload.pdb
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\Antlr3.Runtime.dll
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\Microsoft.AI.Web.dll
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\Microsoft.ApplicationInsights.dll
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\Newtonsoft.Json.dll
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\System.Web.Helpers.dll
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\System.Web.Mvc.dll
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\System.Web.Optimization.dll
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\System.Web.Razor.dll
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\System.Web.WebPages.Deployment.dll
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\System.Web.WebPages.dll
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\System.Web.WebPages.Razor.dll
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\WebGrease.dll
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\System.Web.Helpers.xml
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\System.Web.Mvc.xml
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\System.Web.Optimization.xml
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\System.Web.Razor.xml
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\System.Web.WebPages.xml
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\System.Web.WebPages.Deployment.xml
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\System.Web.WebPages.Razor.xml
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\Antlr3.Runtime.pdb
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\Newtonsoft.Json.xml
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\Microsoft.ApplicationInsights.xml
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\bin\Microsoft.AI.Web.xml
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\obj\Debug\ImageSharingWithUpload.csprojResolveAssemblyReference.cache
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\obj\Debug\ImageSharingWithUpload.dll
+C:\Users\User\Documents\GitHub\2017F-coursework\cs526_EnterpriseCloudComp\ImageSharingWithUpload\ImageSharingWithUpload\obj\Debug\ImageSharingWithUpload.pdb

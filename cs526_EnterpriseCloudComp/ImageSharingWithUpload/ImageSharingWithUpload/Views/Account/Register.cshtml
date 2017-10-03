@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Registration";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>Please register to be able to upload and query images.</p>
+
+@{ Html.BeginForm("Register", "Account", FormMethod.Post); }
+
+<fieldset>
+    <legend>User Information</legend>
+    <p>
+        Select an ID for your user:
+        @Html.TextBox("UserID")
+    </p>
+    <p>
+        Are you visually impaired?
+        @Html.CheckBox("ADA")
+    </p>
+    <input type="submit" value="Register" />
+</fieldset>
+
+@{ Html.EndForm(); }
