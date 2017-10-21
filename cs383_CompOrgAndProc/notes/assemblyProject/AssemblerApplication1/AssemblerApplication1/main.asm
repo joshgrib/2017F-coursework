@@ -7,17 +7,54 @@
 
 .include "m328Pdef.inc"
 
+
+;general idea
+; 1. put stuff in RAM
+; 2. load values into stack
+; 3. initialize port B
+; 3. pop out to reverse while outputting
+
+init:
+	; load data into RAM
+	ldi r16, 1
+	sts $0100, r16
+	ldi r16, 2
+	sts $0101, r16
+	ldi r16, 3
+	sts $0102, r16
+	ldi r16, 4
+	sts $0103, r16
+	ldi r16, 5
+	sts $0104, r16
+
 main:
-	ldi r22, 0x20 ;store value in register
-	sts 0x0100, r22 ;store register value in memory
-	ldi zh, 0x01 ;store memory address in 'z' register (2 parts: z-high and z-low)
-	ldi zl, 0x00
-	ldi r20, 0x05 ;store a value in register
-	clr r23 ;clear out registers
-	clr r22
-	clr r19
-
-loop:
-	ld r16, z+ ;
-	add r21, r16
-
+	ldi r21, low(RAMEND)
+	out spl, r21
+	ldi r22, high(RAMEND)
+	out sph, r22
+	; load values from RAM into stack
+	lds r16, $0100
+	push r16
+	lds r16, $0101
+	push r16
+	lds r16, $0102
+	push r16
+	lds r16, $0103
+	push r16
+	lds r16, $0104
+	push r16
+	; initialize portb
+	ser r16
+	out DDRB, r16
+	; pop from stack and output to portb
+	pop r16
+	out PORTB, r16
+	pop r16
+	out PORTB, r16
+	pop r16
+	out PORTB, r16
+	pop r16
+	out PORTB, r16
+	pop r16
+	out PORTB, r16
+	

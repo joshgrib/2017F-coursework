@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.6  C:\Users\User\Documents\GitHub\2017F-coursework\cs383_CompOrgAndProc\notes\assemblyProject\AssemblerApplication1\AssemblerApplication1\main.asm Thu Sep 28 14:17:34 2017
+AVRASM ver. 2.2.6  C:\Users\joshgrib\Documents\GitHub\2017F-coursework\cs383_CompOrgAndProc\notes\assemblyProject\AssemblerApplication1\AssemblerApplication1\main.asm Thu Oct 19 14:45:45 2017
 
 
 EQU  SIGNATURE_000 0000001e
@@ -695,5 +695,5 @@ EQU  ACIaddr      0000002e
 EQU  TWIaddr      00000030
 EQU  SPMRaddr     00000032
 EQU  INT_VECTORS_SIZE 00000034
-CSEG main         00000000
-CSEG loop         00000009
+CSEG init         00000000
+CSEG main         0000000f

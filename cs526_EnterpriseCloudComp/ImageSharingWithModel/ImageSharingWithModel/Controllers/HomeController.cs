@@ -53,5 +53,5 @@ namespace ImageSharingWithModel.Controllers
 /*
  * Student name:
  * Josh Gribbon
- * 
+ *
  */
