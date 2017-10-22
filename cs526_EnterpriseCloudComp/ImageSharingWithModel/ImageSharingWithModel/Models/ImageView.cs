@@ -13,11 +13,10 @@ namespace ImageSharingWithModel.Models
          */
     {
         [Required]
-        [RegularExpression(@"[a-zA-z0-9_]+")]
-        public String ID { get; set; }
-        [Required]
         [StringLength(40)]
         public String Caption { get; set; }
+        [Required]
+        public int TagId { get; set; }
         [Required]
         [StringLength(200)]
         public String Description { get; set; }
@@ -25,7 +24,7 @@ namespace ImageSharingWithModel.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:d}")]
         public DateTime DateTaken { get; set; }
-        public String UserID { get; set; }
+        public String UserId { get; set; }
 
         public ImageView() { }
     }

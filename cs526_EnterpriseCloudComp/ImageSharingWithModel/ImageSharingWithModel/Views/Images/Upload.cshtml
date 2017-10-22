@@ -18,6 +18,7 @@
         Caption: @Html.TextBox("Caption")
         @Html.ValidationMessage("Caption")
     </p>
+    <p>Select a tag: @Html.DropDownList("Tag", ViewBag.Tags as SelectList)</p>
     <p>
         Description: <br />
         @Html.TextArea("Description",

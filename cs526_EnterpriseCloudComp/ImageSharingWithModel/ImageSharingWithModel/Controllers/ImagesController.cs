@@ -16,26 +16,13 @@ namespace ImageSharingWithModel.Controllers
     {
         private ImageSharingDB db = new ImageSharingDB();
 
-        // GET: Images
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         [HttpGet]
         public ActionResult Upload()
         {
             CheckAda();
-
-            HttpCookie cookie = Request.Cookies.Get("ImageSharing");
-            if (cookie == null)
-            {
-                return RedirectToAction("Register", "Account");
-            }
-            else
-            {
-                return View();
-            }
+            ViewBag.Message = "";
+            ViewBag.tags = new SelectList(db.Tags, "Id", "Name", 1);
+            return View();
         }
 
         [HttpPost, ActionName("Upload")]
@@ -55,35 +42,42 @@ namespace ImageSharingWithModel.Controllers
                     if (user != null)
                     {
 
-                    }
 
-                    /*
-                     * Save image information in the database
-                     */
-                    Image imageEntity = new Image();
-                    imageEntity.Caption = image.Caption;
-                    imageEntity.Description = image.Description;
-                    imageEntity.DateTaken = image.DateTaken;
-                    imageEntity.User = user;
 
-                    String fileName = Server.MapPath("~/App_Data/Image_Info/" + image.ID + ".js");
+                        /*
+                         * Save image information in the database
+                         */
+                        Image imageEntity = new Image();
+                        imageEntity.Caption = image.Caption;
+                        imageEntity.Description = image.Description;
+                        imageEntity.DateTaken = image.DateTaken;
 
-                    if (ImageFile != null && ImageFile.ContentLength > 0)
+                        imageEntity.User = user;
+                        imageEntity.TagId = image.TagId;
+
+                        String fileName = Server.MapPath("~/App_Data/Image_Info/" + image.ID + ".js");
+
+                        if (ImageFile != null && ImageFile.ContentLength > 0)
+                        {
+                            try
+                            {
+                                String imgFileName = Server.MapPath("~/Content/Images/" + image.ID + ".jpg");
+                                ImageFile.SaveAs(imgFileName);
+                            }
+                            catch (Exception e)
+                            {
+                                return RedirectToAction("Error", "Home", new { msg = e.Message });
+                            }
+
+                        }
+
+                        ViewBag.Message = "";
+                        return View("Details", image);
+                    }else
                     {
-                        try
-                        {
-                            String imgFileName = Server.MapPath("~/Content/Images/" + image.ID + ".jpg");
-                            ImageFile.SaveAs(imgFileName);
-                        }
-                        catch (Exception e)
-                        {
-                            return RedirectToAction("Error", "Home", new { msg = e.Message });
-                        }
-
+                        ViewBag.Message = "No such userid registered!";
+                        return View();
                     }
-
-                    ViewBag.Message = "";
-                    return View("QuerySuccess", image);
                 }
                 else
                 {

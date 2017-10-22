@@ -20,12 +20,14 @@ namespace ImageSharingWithModel.Models
         public virtual string Caption { get; set; }
         [MaxLength(200)]
         public virtual string Description { get; set; }
+        [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString="{0:d}")]
         public virtual DateTime DateTaken { get; set; }
 
         [ForeignKey("User")]
         public virtual int UserId { get; set; }
         public virtual User User { get; set; }
+
         [ForeignKey("Tag")]
         public virtual int TagId { get; set; }
         public virtual Tag Tag { get; set; }
