@@ -12,6 +12,7 @@ namespace ImageSharingWithModel.Models
          * View model for an image
          */
     {
+        public int Id;
         [Required]
         [StringLength(40)]
         public String Caption { get; set; }

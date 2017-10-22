@@ -37,13 +37,10 @@ namespace ImageSharingWithModel.Controllers
                 if (cookie != null)
                 {
                     image.UserId = cookie["UserID"];
-                    User user = db.Users.SingleOrDefault(u => u.Id.Equals(image.UserID));
+                    User user = db.Users.SingleOrDefault(u => u.Id.Equals(image.UserId));
 
                     if (user != null)
                     {
-
-
-
                         /*
                          * Save image information in the database
                          */
@@ -119,9 +116,40 @@ namespace ImageSharingWithModel.Controllers
             }
             else
             {
-                ViewBag.Message = "Image with id '" + Id + "' not found";
-                ViewBag.Id = Id;
                 return RedirectToAction("Error", "Home", new {errid="Details"});
+            }
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int Id)
+        {
+            CheckAda();
+            Image imageEntity = db.Images.Find(Id);
+            if (imageEntity != null)
+            {
+                HttpCookie cookie = Request.Cookies.Get("ImageSharing");
+                if (cookie != null && imageEntity.User.userid.Equals(cookie["UserId"]))
+                {
+                    ViewBag.Message = "";
+                    ViewBag.Tags = new SelectList(db.Tags, "Id", "Name", imageEntity.TagId);
+
+                    ImageView image = new ImageView();
+                    image.Id = imageEntity.Id;
+                    image.TagId = imageEntity.TagId;
+                    image.Caption = imageEntity.Caption;
+                    image.Description = imageEntity.Description;
+                    image.DateTaken = imageEntity.DateTaken;
+
+                    return View("Edit", image);
+                }
+                else
+                {
+                    return RedirectToAction("Error", "Home", new { errid = "EditNotAuth" });
+                }
+            }
+            else
+            {
+                return RedirectToAction("Error", "Home", new { errid = "EditNotFound" });
             }
         }
     }

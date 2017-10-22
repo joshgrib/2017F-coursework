@@ -202,11 +202,12 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\RegisterPost.cshtml" />
     <Content Include="Views\Images\Query.cshtml" />
-    <Content Include="Views\Images\QuerySuccess.cshtml" />
+    <Content Include="Views\Images\Details.cshtml" />
     <Content Include="Views\Images\Upload.cshtml" />
     <Content Include="Views\Images\UploadSuccess.cshtml" />
     <Content Include="Views\Shared\Layout.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Images\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
