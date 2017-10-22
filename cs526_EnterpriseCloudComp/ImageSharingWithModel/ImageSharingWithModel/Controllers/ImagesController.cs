@@ -8,11 +8,14 @@ using System.IO;
 using System.Web.Script.Serialization;
 
 using ImageSharingWithModel.Models;
+using ImageSharingWithModel.DAL;
 
 namespace ImageSharingWithModel.Controllers
 {
     public class ImagesController : BaseController
     {
+        private ImageSharingDB db = new ImageSharingDB();
+
         // GET: Images
         public ActionResult Index()
         {
@@ -47,12 +50,21 @@ namespace ImageSharingWithModel.Controllers
                 if (cookie != null)
                 {
                     image.UserID = cookie["UserID"];
+                    User user = db.Users.SingleOrDefault(u => u.Id.Equals(image.UserID));
+
+                    if (user != null)
+                    {
+
+                    }
 
                     /*
-                     * Save image information on the server file system
+                     * Save image information in the database
                      */
-                    JavaScriptSerializer serializer = new JavaScriptSerializer();
-                    String jsonData = serializer.Serialize(image);
+                    Image imageEntity = new Image();
+                    imageEntity.Caption = image.Caption;
+                    imageEntity.Description = image.Description;
+                    imageEntity.DateTaken = image.DateTaken;
+                    imageEntity.User = user;
 
                     String fileName = Server.MapPath("~/App_Data/Image_Info/" + image.ID + ".js");
 
@@ -62,7 +74,6 @@ namespace ImageSharingWithModel.Controllers
                         {
                             String imgFileName = Server.MapPath("~/Content/Images/" + image.ID + ".jpg");
                             ImageFile.SaveAs(imgFileName);
-                            System.IO.File.WriteAllText(fileName, jsonData);
                         }
                         catch (Exception e)
                         {
