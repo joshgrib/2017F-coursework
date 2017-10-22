@@ -36,7 +36,7 @@ namespace ImageSharingWithModel.Controllers
                 HttpCookie cookie = Request.Cookies.Get("ImageSharing");
                 if (cookie != null)
                 {
-                    image.UserID = cookie["UserID"];
+                    image.UserId = cookie["UserID"];
                     User user = db.Users.SingleOrDefault(u => u.Id.Equals(image.UserID));
 
                     if (user != null)
@@ -53,26 +53,22 @@ namespace ImageSharingWithModel.Controllers
                         imageEntity.DateTaken = image.DateTaken;
 
                         imageEntity.User = user;
-                        imageEntity.TagId = image.TagId;
 
-                        String fileName = Server.MapPath("~/App_Data/Image_Info/" + image.ID + ".js");
+                        imageEntity.TagId = image.TagId;
 
                         if (ImageFile != null && ImageFile.ContentLength > 0)
                         {
-                            try
-                            {
-                                String imgFileName = Server.MapPath("~/Content/Images/" + image.ID + ".jpg");
-                                ImageFile.SaveAs(imgFileName);
-                            }
-                            catch (Exception e)
-                            {
-                                return RedirectToAction("Error", "Home", new { msg = e.Message });
-                            }
+                            db.Images.Add(imageEntity);
+                            db.SaveChanges();
 
+                            String imgFileName = Server.MapPath("~/Content/Images/" + imageEntity.Id + ".jpg");
+                            ImageFile.SaveAs(imgFileName);
                         }
-
-                        ViewBag.Message = "";
-                        return View("Details", image);
+                        else
+                        {
+                            ViewBag.Message = "No image file specified!";
+                            return View();
+                        }
                     }else
                     {
                         ViewBag.Message = "No such userid registered!";
