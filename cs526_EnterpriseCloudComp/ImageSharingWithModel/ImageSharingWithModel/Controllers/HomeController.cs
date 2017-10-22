@@ -40,11 +40,17 @@ namespace ImageSharingWithModel.Controllers
             return View();
         }
 
-        public ActionResult Error(String msg = "Error information unavailable.")
+        public ActionResult Error(String errid = "Unspecified.")
         {
             CheckAda();
-            ViewBag.Title = "Error";
-            ViewBag.Message = msg;
+            if ("Details".Equals(errid))
+            {
+                ViewBag.Message = "Problem with Details action!";
+            }
+            else
+            {
+                ViewBag.Message = "Unspecified error!";
+            }
             return View();
         }
     }

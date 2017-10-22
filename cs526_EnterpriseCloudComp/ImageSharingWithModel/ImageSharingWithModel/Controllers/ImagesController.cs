@@ -61,8 +61,10 @@ namespace ImageSharingWithModel.Controllers
                             db.Images.Add(imageEntity);
                             db.SaveChanges();
 
-                            String imgFileName = Server.MapPath("~/Content/Images/" + imageEntity.Id + ".jpg");
+                            String imgFileName = Server.MapPath("~/Content/Images/img-" + imageEntity.Id + ".jpg");
                             ImageFile.SaveAs(imgFileName);
+
+                            return View("Details", image);
                         }
                         else
                         {
@@ -107,31 +109,19 @@ namespace ImageSharingWithModel.Controllers
         }
 
         [HttpGet]
-        public ActionResult Details(String Id)
+        public ActionResult Details(int Id)
         {
             CheckAda();
-            String fileName = Server.MapPath("~/App_Data/Image_Info/" + Id + ".js");
-            if (System.IO.File.Exists(fileName))
-            {
-                try
-                {
-                    String jsonData = System.IO.File.ReadAllText(fileName);
-                    JavaScriptSerializer serializer = new JavaScriptSerializer();
-                    ImageView image = serializer.Deserialize<ImageView>(jsonData);
-
-                    return View("QuerySuccess", image);
-                }
-                catch (Exception e)
-                {
-                    return RedirectToAction("Error", "Home", new { msg = e.Message });
-                }
-
+            Image image = db.Images.Find(Id);
+            if (image != null)
+            { 
+                return View("Details", image);
             }
             else
             {
                 ViewBag.Message = "Image with id '" + Id + "' not found";
                 ViewBag.Id = Id;
-                return View("Query");
+                return RedirectToAction("Error", "Home", new {errid="Details"});
             }
         }
     }
