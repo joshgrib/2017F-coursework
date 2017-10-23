@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 using System.IO;
 using System.Web.Script.Serialization;
+using System.Data.Entity;
 
 using ImageSharingWithModel.Models;
 using ImageSharingWithModel.DAL;
@@ -150,6 +151,44 @@ namespace ImageSharingWithModel.Controllers
             else
             {
                 return RedirectToAction("Error", "Home", new { errid = "EditNotFound" });
+            }
+        }
+
+        [HttpPost, ActionName("Edit")]
+        public ActionResult EditPost(ImageView image)
+        {
+            CheckAda();
+            if (ModelState.IsValid)
+            {
+                Image imageEntity = db.Images.Find(image.Id);
+                if (imageEntity != null)
+                {
+                    HttpCookie cookie = Request.Cookies.Get("ImageSharing");
+                    if (cookie != null && imageEntity.User.userid.Equals(cookie["UserId"]))
+                    {
+                        imageEntity.TagId = image.TagId;
+                        imageEntity.Caption = image.Caption;
+                        imageEntity.Description = image.Description;
+                        imageEntity.DateTaken = image.DateTaken;
+
+                        db.Entry(imageEntity).State = EntityState.Modified;
+                        db.SaveChanges();
+
+                        return RedirectToAction("Details", new {Id = image.Id});
+                    }
+                    else
+                    {
+                        return RedirectToAction("Error", "Home", new { errid = "EditNotAuth" });
+                    }
+                }
+                else
+                {
+                    return RedirectToAction("Error", "Home", new { errid = "EditNotFound" });
+                }
+            }
+            else
+            {
+                return View("Edit", image);
             }
         }
     }
