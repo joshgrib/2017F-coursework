@@ -110,10 +110,16 @@ namespace ImageSharingWithModel.Controllers
         public ActionResult Details(int Id)
         {
             CheckAda();
-            Image image = db.Images.Find(Id);
-            if (image != null)
-            { 
-                return View("Details", image);
+            Image imageEntity = db.Images.Find(Id);
+            if (imageEntity != null)
+            {
+                ImageView imageView = new ImageView();
+                imageView.Caption = imageEntity.Caption;
+                imageView.Description = imageEntity.Description;
+                imageView.DateTaken = imageEntity.DateTaken;
+                imageView.TagName = imageEntity.Tag.Name;
+                imageView.UserId = imageEntity.User.UserId;
+                return View(imageView);
             }
             else
             {
@@ -134,14 +140,14 @@ namespace ImageSharingWithModel.Controllers
                     ViewBag.Message = "";
                     ViewBag.Tags = new SelectList(db.Tags, "Id", "Name", imageEntity.TagId);
 
-                    ImageView image = new ImageView();
-                    image.Id = imageEntity.Id;
-                    image.TagId = imageEntity.TagId;
-                    image.Caption = imageEntity.Caption;
-                    image.Description = imageEntity.Description;
-                    image.DateTaken = imageEntity.DateTaken;
+                    ImageView imageView = new ImageView();
+                    imageView.Id = imageEntity.Id;
+                    imageView.TagId = imageEntity.TagId;
+                    imageView.Caption = imageEntity.Caption;
+                    imageView.Description = imageEntity.Description;
+                    imageView.DateTaken = imageEntity.DateTaken;
 
-                    return View("Edit", image);
+                    return View("Edit", imageView);
                 }
                 else
                 {
@@ -199,8 +205,8 @@ namespace ImageSharingWithModel.Controllers
             Image imageEntity = db.Images.Find(Id);
             if (imageEntity != null)
             {
-                HttpCookie cookie = Request.Cookies.Get("ImageSharing");
-                if (cookie != null && imageEntity.User.UserId.Equals(cookie["UserId"]))
+                String userid = GetLoggedInUser();
+                if (userid != null)
                 {
                     //db.Entry(imageEntity).State = EntityState.Deleted;
                     db.Images.Remove(imageEntity);
@@ -223,11 +229,77 @@ namespace ImageSharingWithModel.Controllers
         {
             CheckAda();
             IEnumerable<Image> images = db.Images.ToList();
-            HttpCookie cookie = Request.Cookies.Get("ImageSHaring");
-            if(cookie != null && cookie["UserId"] != null)
+            String userid = GetLoggedInUser();
+            if(userid != null)
             {
-                ViewBag.UserId = cookie["UserId"];
+                ViewBag.UserId = userid;
                 return View(images);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
+        }
+
+        [HttpGet]
+        public ActionResult ListByUser()
+        {
+            CheckAda();
+            SelectList users = new SelectList(db.Users, "Id", "UserId", 1);
+            return View(users);
+        }
+
+        [HttpGet]
+        public ActionResult DoListByUser(int Id)
+        {
+            CheckAda();
+            String userid = GetLoggedInUser();
+            if (userid != null)
+            {
+                User user = db.Users.Find(Id);
+                if (user != null)
+                {
+
+                    ViewBag.UserId = userid;
+                    return View("ListAll", user.Images);
+                }
+                else
+                {
+                    return RedirectToAction("Error", "Home", new { errid = "ListByUser" });
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
+        }
+
+        [HttpGet]
+        public ActionResult ListByTag()
+        {
+            CheckAda();
+            SelectList tags = new SelectList(db.Tags, "Id", "Name", 1);
+            return View(tags);
+        }
+
+        [HttpGet]
+        public ActionResult DoListByTag(int Id)
+        {
+            CheckAda();
+            String userid = GetLoggedInUser();
+            if (userid != null)
+            {
+                Tag tag = db.Tags.Find(Id);
+                if (tag != null)
+                {
+
+                    ViewBag.UserId = userid;
+                    return View("ListAll", tag.Images);
+                }
+                else
+                {
+                    return RedirectToAction("Error", "Home", new { errid = "ListByUser" });
+                }
             }
             else
             {

@@ -12,7 +12,6 @@ namespace ImageSharingWithModel.Models
          * View model for an image
          */
     {
-        public int Id;
         [Required]
         [StringLength(40)]
         public String Caption { get; set; }
@@ -23,8 +22,14 @@ namespace ImageSharingWithModel.Models
         public String Description { get; set; }
         [Required]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:d}")]
+        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode =true)]
         public DateTime DateTaken { get; set; }
+
+        [ScaffoldColumn(false)]
+        public int Id;
+        [ScaffoldColumn(false)]
+        public String TagName { get; set; }
+        [ScaffoldColumn(false)]
         public String UserId { get; set; }
 
         public ImageView() { }

@@ -29,32 +29,32 @@ namespace ImageSharingWithModel.Controllers
         }
 
         [HttpPost, ActionName("Register")]
-        public ActionResult RegisterPost(UserView UserInfo)
+        public ActionResult RegisterPost(UserView info)
         {
             CheckAda();
 
             if (ModelState.IsValid)
             {
-                User User = db.Users.SingleOrDefault(u => u.UserId.Equals(UserInfo.UserID));
+                User User = db.Users.SingleOrDefault(u => u.UserId.Equals(info.UserID));
                 if (User == null)
                 {
                     //save use to database
-                    User = new User(UserInfo.UserID, UserInfo.ADA);
+                    User = new User(info.UserID, info.ADA);
                     db.Users.Add(User);
                 }
                 else
                 {
-                    User.ADA = UserInfo.ADA;
+                    User.ADA = info.ADA;
                     db.Entry(User).State = EntityState.Modified;
                 }
                 db.SaveChanges();
 
-                SaveCookie(UserInfo.UserID, UserInfo.ADA);
+                SaveCookie(info.UserID, info.ADA);
             }
 
-            ViewBag.UserID = UserInfo.UserID;
-            ViewBag.ADA = UserInfo.ADA;
-            ViewBag.isADA = UserInfo.ADA;
+            ViewBag.UserID = info.UserID;
+            ViewBag.ADA = info.ADA;
+            ViewBag.isADA = info.ADA;
             return View("RegisterPost");
         }
 

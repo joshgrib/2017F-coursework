@@ -11,9 +11,9 @@ namespace ImageSharingWithModel.Models
     {
         [Required]
         [RegularExpression(@"[a-zA-Z0-9_]+")]
-        public string UserID;
+        public string UserID { get; set; }
 
         [Required]
-        public bool ADA;
+        public bool ADA { get; set; }
     }
 }

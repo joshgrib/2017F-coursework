@@ -20,5 +20,22 @@ namespace ImageSharingWithModel.Controllers
                 ViewBag.isADA = false;
             }
         }
+        protected String GetLoggedInUser()
+        {
+            HttpCookie cookie = Request.Cookies.Get("ImageSharing");
+            if(cookie != null && cookie["UserId"] != null)
+            {
+                return cookie["UserId"];
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        protected ActionResult ForceLogin()
+        {
+            return RedirectToAction("Login", "Account");
+        }
     }
 }
