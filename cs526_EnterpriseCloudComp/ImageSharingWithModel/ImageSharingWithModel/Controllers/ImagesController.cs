@@ -191,5 +191,31 @@ namespace ImageSharingWithModel.Controllers
                 return View("Edit", image);
             }
         }
+
+        [HttpPost]
+        public ActionResult Delete(int Id)
+        {
+            CheckAda();
+            Image imageEntity = db.Images.Find(Id);
+            if (imageEntity != null)
+            {
+                HttpCookie cookie = Request.Cookies.Get("ImageSharing");
+                if (cookie != null && imageEntity.User.userid.Equals(cookie["UserId"]))
+                {
+                    //db.Entry(imageEntity).State = EntityState.Deleted;
+                    db.Images.Remove(imageEntity);
+                    db.SaveChanges();
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    return RedirectToAction("Error", "Home", new { errid = "DeleteNotAuth" });
+                }
+            }
+            else
+            {
+                return RedirectToAction("Error", "Home", new { errid = "DeleteNotFound" });
+            }
+        }
     }
 }
