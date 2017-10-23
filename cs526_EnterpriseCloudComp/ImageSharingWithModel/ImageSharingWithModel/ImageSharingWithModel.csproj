@@ -151,6 +151,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImagesController.cs" />
+    <Compile Include="DAL\ImageSharingDBInitializer.cs" />
     <Compile Include="DAL\ImageSharingDB.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -163,9 +164,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\ImageSharingWithModel.DAL.ImageSharingDB.mdf" />
+    <Content Include="App_Data\ImageSharingWithModel.DAL.ImageSharingDB_log.ldf">
+      <DependentUpon>ImageSharingWithModel.DAL.ImageSharingDB.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\common.css" />
+    <Content Include="Content\Images\img-1.jpg" />
     <Content Include="Content\Site_ADA.css" />
     <Content Include="Content\Site_nonADA.css" />
     <Content Include="favicon.ico" />
@@ -213,8 +219,6 @@
     <Content Include="Views\Images\ListByTag.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Content\Images\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>

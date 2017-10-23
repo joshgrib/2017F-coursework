@@ -13,29 +13,19 @@ namespace ImageSharingWithModel.Controllers
 {
     public class HomeController : BaseController
     {
-        public ActionResult Index(String userID = null)
+        public ActionResult Index(String Id = null)
         {
             CheckAda();
             ViewBag.title = "Welcome!";
 
-            if (userID == null)
+            String user = GetLoggedInUser();
+            if(user == null)
             {
-                HttpCookie cookie = Request.Cookies.Get("ImageSharing");
-                if (cookie != null)
-                {
-                    ViewBag.userID = cookie["UserID"];
-                    ViewBag.welcomeMsg = "Click 'Upload' to add one of your images, or 'Query' to search for an image.";
-                }
-                else
-                {
-                    ViewBag.userID = "stranger";
-                    ViewBag.welcomeMsg = "Click 'Register' above to join the site!";
-                }
+                ViewBag.Id = Id;
             }
             else
             {
-                ViewBag.userID = userID;
-                ViewBag.welcomeMsg = "Click 'Upload' to add one of your images, or 'Query' to search for an image.";
+                ViewBag.Id = user;
             }
             return View();
         }

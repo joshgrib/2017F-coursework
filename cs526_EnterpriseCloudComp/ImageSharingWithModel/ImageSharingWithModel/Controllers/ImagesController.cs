@@ -110,20 +110,28 @@ namespace ImageSharingWithModel.Controllers
         public ActionResult Details(int Id)
         {
             CheckAda();
-            Image imageEntity = db.Images.Find(Id);
-            if (imageEntity != null)
+            if(GetLoggedInUser() == null)
             {
-                ImageView imageView = new ImageView();
-                imageView.Caption = imageEntity.Caption;
-                imageView.Description = imageEntity.Description;
-                imageView.DateTaken = imageEntity.DateTaken;
-                imageView.TagName = imageEntity.Tag.Name;
-                imageView.UserId = imageEntity.User.UserId;
-                return View(imageView);
+                return ForceLogin();
             }
             else
             {
-                return RedirectToAction("Error", "Home", new {errid="Details"});
+                Image imageEntity = db.Images.Find(Id);
+                if (imageEntity != null)
+                {
+                    ImageView imageView = new ImageView();
+                    imageView.Id = imageEntity.Id;
+                    imageView.Caption = imageEntity.Caption;
+                    imageView.Description = imageEntity.Description;
+                    imageView.DateTaken = imageEntity.DateTaken;
+                    imageView.TagName = imageEntity.Tag.Name;
+                    imageView.UserId = imageEntity.User.UserId;
+                    return View(imageView);
+                }
+                else
+                {
+                    return RedirectToAction("Error", "Home", new { errid = "Details" });
+                }
             }
         }
 
