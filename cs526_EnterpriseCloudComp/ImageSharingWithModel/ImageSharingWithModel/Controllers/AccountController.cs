@@ -35,7 +35,7 @@ namespace ImageSharingWithModel.Controllers
 
             if (ModelState.IsValid)
             {
-                User User = db.Users.SingleOrDefault(u => u.userid.Equals(UserInfo.UserID));
+                User User = db.Users.SingleOrDefault(u => u.UserId.Equals(UserInfo.UserID));
                 if (User == null)
                 {
                     //save use to database
@@ -70,7 +70,7 @@ namespace ImageSharingWithModel.Controllers
         public ActionResult DoLogin(string UserID)
         {
             CheckAda();
-            User User = db.Users.SingleOrDefault(u => u.userid.Equals(UserID));
+            User User = db.Users.SingleOrDefault(u => u.UserId.Equals(UserID));
             if (User != null)
             {
                 SaveCookie(UserID, User.ADA);

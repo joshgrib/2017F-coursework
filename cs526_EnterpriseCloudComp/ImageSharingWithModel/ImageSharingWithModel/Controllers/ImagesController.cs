@@ -129,7 +129,7 @@ namespace ImageSharingWithModel.Controllers
             if (imageEntity != null)
             {
                 HttpCookie cookie = Request.Cookies.Get("ImageSharing");
-                if (cookie != null && imageEntity.User.userid.Equals(cookie["UserId"]))
+                if (cookie != null && imageEntity.User.UserId.Equals(cookie["UserId"]))
                 {
                     ViewBag.Message = "";
                     ViewBag.Tags = new SelectList(db.Tags, "Id", "Name", imageEntity.TagId);
@@ -164,7 +164,7 @@ namespace ImageSharingWithModel.Controllers
                 if (imageEntity != null)
                 {
                     HttpCookie cookie = Request.Cookies.Get("ImageSharing");
-                    if (cookie != null && imageEntity.User.userid.Equals(cookie["UserId"]))
+                    if (cookie != null && imageEntity.User.UserId.Equals(cookie["UserId"]))
                     {
                         imageEntity.TagId = image.TagId;
                         imageEntity.Caption = image.Caption;
@@ -200,7 +200,7 @@ namespace ImageSharingWithModel.Controllers
             if (imageEntity != null)
             {
                 HttpCookie cookie = Request.Cookies.Get("ImageSharing");
-                if (cookie != null && imageEntity.User.userid.Equals(cookie["UserId"]))
+                if (cookie != null && imageEntity.User.UserId.Equals(cookie["UserId"]))
                 {
                     //db.Entry(imageEntity).State = EntityState.Deleted;
                     db.Images.Remove(imageEntity);
@@ -215,6 +215,23 @@ namespace ImageSharingWithModel.Controllers
             else
             {
                 return RedirectToAction("Error", "Home", new { errid = "DeleteNotFound" });
+            }
+        }
+
+        [HttpGet]
+        public ActionResult ListAll()
+        {
+            CheckAda();
+            IEnumerable<Image> images = db.Images.ToList();
+            HttpCookie cookie = Request.Cookies.Get("ImageSHaring");
+            if(cookie != null && cookie["UserId"] != null)
+            {
+                ViewBag.UserId = cookie["UserId"];
+                return View(images);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
             }
         }
     }

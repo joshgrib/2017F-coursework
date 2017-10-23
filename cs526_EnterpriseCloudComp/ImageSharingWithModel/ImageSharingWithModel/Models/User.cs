@@ -12,7 +12,7 @@ namespace ImageSharingWithModel.Models
         [Key]
         public virtual int Id { get; set; }
         [MaxLength(20)]
-        public virtual string userid { get; set; }
+        public virtual string UserId { get; set; }
         public virtual bool ADA { get; set; }
 
         public virtual ICollection<Image> Images { get; set; }
@@ -20,7 +20,7 @@ namespace ImageSharingWithModel.Models
         public User() { }
         public User(string u, bool a)
         {
-            userid = u;
+            UserId = u;
             ADA = a;
             Images = new List<Image>();
         }

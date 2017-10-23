@@ -208,6 +208,7 @@
     <Content Include="Views\Shared\Layout.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Images\Edit.cshtml" />
+    <Content Include="Views\Images\ListAll.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
