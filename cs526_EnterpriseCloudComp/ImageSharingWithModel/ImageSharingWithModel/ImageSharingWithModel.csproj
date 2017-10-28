@@ -217,6 +217,7 @@
     <Content Include="Views\Images\ListAll.cshtml" />
     <Content Include="Views\Images\ListByUser.cshtml" />
     <Content Include="Views\Images\ListByTag.cshtml" />
+    <Content Include="Views\Images\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Base\" />
