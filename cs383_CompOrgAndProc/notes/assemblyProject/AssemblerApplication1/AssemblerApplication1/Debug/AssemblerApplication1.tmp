@@ -23,7 +23,10 @@
   <FILE>AssemblerApplication1.lss</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <init><FILE>C:\Users\joshgrib\Documents\GitHub\2017F-coursework\cs383_CompOrgAndProc\notes\assemblyProject\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>17</LINE></init>
-  <main><FILE>C:\Users\joshgrib\Documents\GitHub\2017F-coursework\cs383_CompOrgAndProc\notes\assemblyProject\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>29</LINE></main>
+  <init><FILE>C:\Users\joshgrib\Documents\GitHub\2017F-coursework\cs383_CompOrgAndProc\notes\assemblyProject\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>3</LINE></init>
+  <main><FILE>C:\Users\joshgrib\Documents\GitHub\2017F-coursework\cs383_CompOrgAndProc\notes\assemblyProject\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>8</LINE></main>
+  <loop><FILE>C:\Users\joshgrib\Documents\GitHub\2017F-coursework\cs383_CompOrgAndProc\notes\assemblyProject\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>13</LINE></loop>
+  <end><FILE>C:\Users\joshgrib\Documents\GitHub\2017F-coursework\cs383_CompOrgAndProc\notes\assemblyProject\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>23</LINE></end>
+  <largefound><FILE>C:\Users\joshgrib\Documents\GitHub\2017F-coursework\cs383_CompOrgAndProc\notes\assemblyProject\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>20</LINE></largefound>
  </LABELS>
 </ASSEMBLER_INFO>
