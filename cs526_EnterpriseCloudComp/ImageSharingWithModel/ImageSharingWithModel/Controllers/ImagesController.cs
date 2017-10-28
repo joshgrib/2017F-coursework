@@ -62,7 +62,8 @@ namespace ImageSharingWithModel.Controllers
                             String imgFileName = Server.MapPath("~/Content/Images/img-" + imageEntity.Id + ".jpg");
                             ImageFile.SaveAs(imgFileName);
 
-                            return View("Details", image);
+                            //return View("Details", image);
+                            return RedirectToAction("Details", imageEntity.Id);
                         }
                         else
                         {
@@ -191,23 +192,15 @@ namespace ImageSharingWithModel.Controllers
                     Image imageEntity = db.Images.Find(image.Id);
                     if (imageEntity != null)
                     {
-                        HttpCookie cookie = Request.Cookies.Get("ImageSharing");
-                        if (cookie != null && imageEntity.User.UserId.Equals(cookie["UserId"]))
-                        {
-                            imageEntity.TagId = image.TagId;
-                            imageEntity.Caption = image.Caption;
-                            imageEntity.Description = image.Description;
-                            imageEntity.DateTaken = image.DateTaken;
+                        imageEntity.TagId = image.TagId;
+                        imageEntity.Caption = image.Caption;
+                        imageEntity.Description = image.Description;
+                        imageEntity.DateTaken = image.DateTaken;
 
-                            db.Entry(imageEntity).State = EntityState.Modified;
-                            db.SaveChanges();
+                        db.Entry(imageEntity).State = EntityState.Modified;
+                        db.SaveChanges();
 
-                            return RedirectToAction("Details", new { Id = image.Id });
-                        }
-                        else
-                        {
-                            return RedirectToAction("Error", "Home", new { errid = "EditNotAuth" });
-                        }
+                        return RedirectToAction("Details", new { Id = image.Id });
                     }
                     else
                     {
@@ -222,8 +215,12 @@ namespace ImageSharingWithModel.Controllers
         }
 
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeletePost(int Id)
+        public ActionResult DeletePost(FormCollection values, int Id)
         {
+            /*
+             * FormCollection is just here to clear up the overloading
+             * of the Delete action for GET and POST
+             */
             CheckAda();
             String userid = GetLoggedInUser();
             if (userid != null)
@@ -278,7 +275,7 @@ namespace ImageSharingWithModel.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("Error", "Home", new { errid = "Details" });
+                    return RedirectToAction("Error", "Home", new { errid = "Delete" });
                 }
             }
         }

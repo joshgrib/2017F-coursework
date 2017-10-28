@@ -13,7 +13,7 @@
 
     <p><img src="@Url.Content("~/Content/Images/img-" + @Model.Id + ".jpg")"</p>
 
-    <p>Image id: @Model.Id </p>
+    @Html.HiddenFor(m => m.Id)
 
     <p>
         Caption: @Html.TextBoxFor(m => m.Caption)
@@ -31,7 +31,7 @@
                     @Html.ValidationMessageFor(m => m.DateTaken)
     </p>
     <p>
-        <input type="submit" value="Upload" />
+        <input type="submit" value="Submit Changes" />
     </p>
 </fieldset>
 
