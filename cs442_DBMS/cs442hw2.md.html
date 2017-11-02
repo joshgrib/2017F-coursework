@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8" />
+      <title>cs442hw2</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    jax: ["input/TeX","output/HTML-CSS"],
+    extensions: [],
+    TeX: {
+      extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]
+    },
+    showMathMenu: false
+  });
+</script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js">
+</script>
+      <style>.markdown-preview:not([data-use-github-style]) { padding: 2em; font-size: 1.2em; color: rgb(197, 197, 200); overflow: auto; background-color: rgb(24, 29, 34); }
+.markdown-preview:not([data-use-github-style]) > :first-child { margin-top: 0px; }
+.markdown-preview:not([data-use-github-style]) h1, .markdown-preview:not([data-use-github-style]) h2, .markdown-preview:not([data-use-github-style]) h3, .markdown-preview:not([data-use-github-style]) h4, .markdown-preview:not([data-use-github-style]) h5, .markdown-preview:not([data-use-github-style]) h6 { line-height: 1.2; margin-top: 1.5em; margin-bottom: 0.5em; color: rgb(255, 255, 255); }
+.markdown-preview:not([data-use-github-style]) h1 { font-size: 2.4em; font-weight: 300; }
+.markdown-preview:not([data-use-github-style]) h2 { font-size: 1.8em; font-weight: 400; }
+.markdown-preview:not([data-use-github-style]) h3 { font-size: 1.5em; font-weight: 500; }
+.markdown-preview:not([data-use-github-style]) h4 { font-size: 1.2em; font-weight: 600; }
+.markdown-preview:not([data-use-github-style]) h5 { font-size: 1.1em; font-weight: 600; }
+.markdown-preview:not([data-use-github-style]) h6 { font-size: 1em; font-weight: 600; }
+.markdown-preview:not([data-use-github-style]) strong { color: rgb(255, 255, 255); }
+.markdown-preview:not([data-use-github-style]) del { color: rgb(155, 155, 160); }
+.markdown-preview:not([data-use-github-style]) a, .markdown-preview:not([data-use-github-style]) a code { color: rgb(245, 71, 132); }
+.markdown-preview:not([data-use-github-style]) img { max-width: 100%; }
+.markdown-preview:not([data-use-github-style]) > p { margin-top: 0px; margin-bottom: 1.5em; }
+.markdown-preview:not([data-use-github-style]) > ul, .markdown-preview:not([data-use-github-style]) > ol { margin-bottom: 1.5em; }
+.markdown-preview:not([data-use-github-style]) blockquote { margin: 1.5em 0px; font-size: inherit; color: rgb(155, 155, 160); border-color: rgb(58, 70, 82); border-width: 4px; }
+.markdown-preview:not([data-use-github-style]) hr { margin: 3em 0px; border-top: 2px dashed rgb(58, 70, 82); background: none; }
+.markdown-preview:not([data-use-github-style]) table { margin: 1.5em 0px; }
+.markdown-preview:not([data-use-github-style]) th { color: rgb(255, 255, 255); }
+.markdown-preview:not([data-use-github-style]) th, .markdown-preview:not([data-use-github-style]) td { padding: 0.66em 1em; border: 1px solid rgb(58, 70, 82); }
+.markdown-preview:not([data-use-github-style]) pre, .markdown-preview:not([data-use-github-style]) code { color: rgb(255, 255, 255); background-color: rgb(41, 49, 58); }
+.markdown-preview:not([data-use-github-style]) pre, .markdown-preview:not([data-use-github-style]) pre.editor-colors { margin: 1.5em 0px; padding: 1em; font-size: 0.92em; border-radius: 3px; background-color: rgb(32, 39, 46); }
+.markdown-preview:not([data-use-github-style]) kbd { color: rgb(255, 255, 255); border-width: 1px 1px 2px; border-style: solid; border-color: rgb(58, 70, 82) rgb(58, 70, 82) rgb(45, 55, 64); background-color: rgb(41, 49, 58); }
+.markdown-preview[data-use-github-style] { font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif; line-height: 1.6; word-wrap: break-word; padding: 30px; font-size: 16px; color: rgb(51, 51, 51); overflow: scroll; background-color: rgb(255, 255, 255); }
+.markdown-preview[data-use-github-style] > :first-child { margin-top: 0px !important; }
+.markdown-preview[data-use-github-style] > :last-child { margin-bottom: 0px !important; }
+.markdown-preview[data-use-github-style] a:not([href]) { color: inherit; text-decoration: none; }
+.markdown-preview[data-use-github-style] .absent { color: rgb(204, 0, 0); }
+.markdown-preview[data-use-github-style] .anchor { position: absolute; top: 0px; left: 0px; display: block; padding-right: 6px; padding-left: 30px; margin-left: -30px; }
+.markdown-preview[data-use-github-style] .anchor:focus { outline: none; }
+.markdown-preview[data-use-github-style] h1, .markdown-preview[data-use-github-style] h2, .markdown-preview[data-use-github-style] h3, .markdown-preview[data-use-github-style] h4, .markdown-preview[data-use-github-style] h5, .markdown-preview[data-use-github-style] h6 { position: relative; margin-top: 1em; margin-bottom: 16px; font-weight: bold; line-height: 1.4; }
+.markdown-preview[data-use-github-style] h1 .octicon-link, .markdown-preview[data-use-github-style] h2 .octicon-link, .markdown-preview[data-use-github-style] h3 .octicon-link, .markdown-preview[data-use-github-style] h4 .octicon-link, .markdown-preview[data-use-github-style] h5 .octicon-link, .markdown-preview[data-use-github-style] h6 .octicon-link { display: none; color: rgb(0, 0, 0); vertical-align: middle; }
+.markdown-preview[data-use-github-style] h1:hover .anchor, .markdown-preview[data-use-github-style] h2:hover .anchor, .markdown-preview[data-use-github-style] h3:hover .anchor, .markdown-preview[data-use-github-style] h4:hover .anchor, .markdown-preview[data-use-github-style] h5:hover .anchor, .markdown-preview[data-use-github-style] h6:hover .anchor { padding-left: 8px; margin-left: -30px; text-decoration: none; }
+.markdown-preview[data-use-github-style] h1:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h2:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h3:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h4:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h5:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h6:hover .anchor .octicon-link { display: inline-block; }
+.markdown-preview[data-use-github-style] h1 tt, .markdown-preview[data-use-github-style] h2 tt, .markdown-preview[data-use-github-style] h3 tt, .markdown-preview[data-use-github-style] h4 tt, .markdown-preview[data-use-github-style] h5 tt, .markdown-preview[data-use-github-style] h6 tt, .markdown-preview[data-use-github-style] h1 code, .markdown-preview[data-use-github-style] h2 code, .markdown-preview[data-use-github-style] h3 code, .markdown-preview[data-use-github-style] h4 code, .markdown-preview[data-use-github-style] h5 code, .markdown-preview[data-use-github-style] h6 code { font-size: inherit; }
+.markdown-preview[data-use-github-style] h1 { padding-bottom: 0.3em; font-size: 2.25em; line-height: 1.2; border-bottom: 1px solid rgb(238, 238, 238); }
+.markdown-preview[data-use-github-style] h1 .anchor { line-height: 1; }
+.markdown-preview[data-use-github-style] h2 { padding-bottom: 0.3em; font-size: 1.75em; line-height: 1.225; border-bottom: 1px solid rgb(238, 238, 238); }
+.markdown-preview[data-use-github-style] h2 .anchor { line-height: 1; }
+.markdown-preview[data-use-github-style] h3 { font-size: 1.5em; line-height: 1.43; }
+.markdown-preview[data-use-github-style] h3 .anchor { line-height: 1.2; }
+.markdown-preview[data-use-github-style] h4 { font-size: 1.25em; }
+.markdown-preview[data-use-github-style] h4 .anchor { line-height: 1.2; }
+.markdown-preview[data-use-github-style] h5 { font-size: 1em; }
+.markdown-preview[data-use-github-style] h5 .anchor { line-height: 1.1; }
+.markdown-preview[data-use-github-style] h6 { font-size: 1em; color: rgb(119, 119, 119); }
+.markdown-preview[data-use-github-style] h6 .anchor { line-height: 1.1; }
+.markdown-preview[data-use-github-style] p, .markdown-preview[data-use-github-style] blockquote, .markdown-preview[data-use-github-style] ul, .markdown-preview[data-use-github-style] ol, .markdown-preview[data-use-github-style] dl, .markdown-preview[data-use-github-style] table, .markdown-preview[data-use-github-style] pre { margin-top: 0px; margin-bottom: 16px; }
+.markdown-preview[data-use-github-style] hr { height: 4px; padding: 0px; margin: 16px 0px; border: 0px none; background-color: rgb(231, 231, 231); }
+.markdown-preview[data-use-github-style] ul, .markdown-preview[data-use-github-style] ol { padding-left: 2em; }
+.markdown-preview[data-use-github-style] ul.no-list, .markdown-preview[data-use-github-style] ol.no-list { padding: 0px; list-style-type: none; }
+.markdown-preview[data-use-github-style] ul ul, .markdown-preview[data-use-github-style] ul ol, .markdown-preview[data-use-github-style] ol ol, .markdown-preview[data-use-github-style] ol ul { margin-top: 0px; margin-bottom: 0px; }
+.markdown-preview[data-use-github-style] li > p { margin-top: 16px; }
+.markdown-preview[data-use-github-style] dl { padding: 0px; }
+.markdown-preview[data-use-github-style] dl dt { padding: 0px; margin-top: 16px; font-size: 1em; font-style: italic; font-weight: bold; }
+.markdown-preview[data-use-github-style] dl dd { padding: 0px 16px; margin-bottom: 16px; }
+.markdown-preview[data-use-github-style] blockquote { padding: 0px 15px; color: rgb(119, 119, 119); border-left: 4px solid rgb(221, 221, 221); }
+.markdown-preview[data-use-github-style] blockquote > :first-child { margin-top: 0px; }
+.markdown-preview[data-use-github-style] blockquote > :last-child { margin-bottom: 0px; }
+.markdown-preview[data-use-github-style] table { display: block; width: 100%; overflow: auto; word-break: keep-all; }
+.markdown-preview[data-use-github-style] table th { font-weight: bold; }
+.markdown-preview[data-use-github-style] table th, .markdown-preview[data-use-github-style] table td { padding: 6px 13px; border: 1px solid rgb(221, 221, 221); }
+.markdown-preview[data-use-github-style] table tr { border-top: 1px solid rgb(204, 204, 204); background-color: rgb(255, 255, 255); }
+.markdown-preview[data-use-github-style] table tr:nth-child(2n) { background-color: rgb(248, 248, 248); }
+.markdown-preview[data-use-github-style] img { max-width: 100%; box-sizing: border-box; }
+.markdown-preview[data-use-github-style] .emoji { max-width: none; }
+.markdown-preview[data-use-github-style] span.frame { display: block; overflow: hidden; }
+.markdown-preview[data-use-github-style] span.frame > span { display: block; float: left; width: auto; padding: 7px; margin: 13px 0px 0px; overflow: hidden; border: 1px solid rgb(221, 221, 221); }
+.markdown-preview[data-use-github-style] span.frame span img { display: block; float: left; }
+.markdown-preview[data-use-github-style] span.frame span span { display: block; padding: 5px 0px 0px; clear: both; color: rgb(51, 51, 51); }
+.markdown-preview[data-use-github-style] span.align-center { display: block; overflow: hidden; clear: both; }
+.markdown-preview[data-use-github-style] span.align-center > span { display: block; margin: 13px auto 0px; overflow: hidden; text-align: center; }
+.markdown-preview[data-use-github-style] span.align-center span img { margin: 0px auto; text-align: center; }
+.markdown-preview[data-use-github-style] span.align-right { display: block; overflow: hidden; clear: both; }
+.markdown-preview[data-use-github-style] span.align-right > span { display: block; margin: 13px 0px 0px; overflow: hidden; text-align: right; }
+.markdown-preview[data-use-github-style] span.align-right span img { margin: 0px; text-align: right; }
+.markdown-preview[data-use-github-style] span.float-left { display: block; float: left; margin-right: 13px; overflow: hidden; }
+.markdown-preview[data-use-github-style] span.float-left span { margin: 13px 0px 0px; }
+.markdown-preview[data-use-github-style] span.float-right { display: block; float: right; margin-left: 13px; overflow: hidden; }
+.markdown-preview[data-use-github-style] span.float-right > span { display: block; margin: 13px auto 0px; overflow: hidden; text-align: right; }
+.markdown-preview[data-use-github-style] code, .markdown-preview[data-use-github-style] tt { padding: 0.2em 0px; margin: 0px; font-size: 85%; border-radius: 3px; background-color: rgba(0, 0, 0, 0.0392157); }
+.markdown-preview[data-use-github-style] code::before, .markdown-preview[data-use-github-style] tt::before, .markdown-preview[data-use-github-style] code::after, .markdown-preview[data-use-github-style] tt::after { letter-spacing: -0.2em; content: " "; }
+.markdown-preview[data-use-github-style] code br, .markdown-preview[data-use-github-style] tt br { display: none; }
+.markdown-preview[data-use-github-style] del code { text-decoration: inherit; }
+.markdown-preview[data-use-github-style] pre > code { padding: 0px; margin: 0px; font-size: 100%; word-break: normal; white-space: pre; border: 0px; background: transparent; }
+.markdown-preview[data-use-github-style] .highlight { margin-bottom: 16px; }
+.markdown-preview[data-use-github-style] .highlight pre, .markdown-preview[data-use-github-style] pre { padding: 16px; overflow: auto; font-size: 85%; line-height: 1.45; border-radius: 3px; background-color: rgb(247, 247, 247); }
+.markdown-preview[data-use-github-style] .highlight pre { margin-bottom: 0px; word-break: normal; }
+.markdown-preview[data-use-github-style] pre { word-wrap: normal; }
+.markdown-preview[data-use-github-style] pre code, .markdown-preview[data-use-github-style] pre tt { display: inline; max-width: initial; padding: 0px; margin: 0px; overflow: initial; line-height: inherit; word-wrap: normal; border: 0px; background-color: transparent; }
+.markdown-preview[data-use-github-style] pre code::before, .markdown-preview[data-use-github-style] pre tt::before, .markdown-preview[data-use-github-style] pre code::after, .markdown-preview[data-use-github-style] pre tt::after { content: normal; }
+.markdown-preview[data-use-github-style] kbd { display: inline-block; padding: 3px 5px; font-size: 11px; line-height: 10px; color: rgb(85, 85, 85); vertical-align: middle; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(204, 204, 204) rgb(187, 187, 187); border-radius: 3px; box-shadow: rgb(187, 187, 187) 0px -1px 0px inset; background-color: rgb(252, 252, 252); }
+.markdown-preview[data-use-github-style] a { color: rgb(51, 122, 183); }
+.markdown-preview[data-use-github-style] pre, .markdown-preview[data-use-github-style] code { color: inherit; }
+.markdown-preview[data-use-github-style] pre, .markdown-preview[data-use-github-style] pre.editor-colors { padding: 0.8em 1em; margin-bottom: 1em; font-size: 0.85em; border-radius: 4px; overflow: auto; }
+.scrollbars-visible-always .markdown-preview pre.editor-colors .vertical-scrollbar, .scrollbars-visible-always .markdown-preview pre.editor-colors .horizontal-scrollbar { visibility: hidden; }
+.scrollbars-visible-always .markdown-preview pre.editor-colors:hover .vertical-scrollbar, .scrollbars-visible-always .markdown-preview pre.editor-colors:hover .horizontal-scrollbar { visibility: visible; }
+.markdown-preview del { text-decoration: none; position: relative; }
+.markdown-preview del::after { border-bottom: 1px solid black; content: ""; left: 0px; position: absolute; right: 0px; top: 50%; }
+.markdown-preview .flash { animation: flash 1s ease-out 1; outline: rgba(255, 0, 0, 0) solid 1px; }
+.markdown-preview .flash:not(li) { display: block; }
+.bracket-matcher .region {
+  border-bottom: 1px dotted lime;
+  position: absolute;
+}
+
+.spell-check-misspelling .region {
+  border-bottom: 2px dotted rgba(255, 51, 51, 0.75);
+}
+.spell-check-corrections {
+  width: 25em !important;
+}
+
+pre.editor-colors {
+  background-color: #181d22;
+  color: #c5c5c8;
+}
+pre.editor-colors .wrap-guide {
+  background-color: #232b32;
+}
+pre.editor-colors .indent-guide {
+  color: #586b7e;
+}
+pre.editor-colors .invisible-character {
+  color: #586b7e;
+  opacity: 0.5;
+}
+pre.editor-colors .gutter {
+  background-color: #181d22;
+  color: #c5c5c8;
+}
+pre.editor-colors .gutter .line-number.cursor-line {
+  background-color: #232b32;
+  color: #c5c5c8;
+}
+pre.editor-colors .gutter .line-number.cursor-line-no-selection {
+  color: #c5c5c8;
+}
+pre.editor-colors .gutter .line-number.folded,
+pre.editor-colors .gutter .line-number:after,
+pre.editor-colors .fold-marker:after {
+  color: #9ca8b4;
+}
+pre.editor-colors .invisible {
+  color: #c5c5c8;
+}
+pre.editor-colors .cursor {
+  color: #f54784;
+  border-left-width: 2px;
+  transition: opacity 0.2s cubic-bezier(0.2, 0.3, 0, 1);
+}
+pre.editor-colors .selection .region {
+  background-color: #384550;
+}
+pre.editor-colors .search-results .syntax--marker .region {
+  background-color: transparent;
+  border: 1px solid #f54784;
+}
+pre.editor-colors .search-results .syntax--marker.current-result .region {
+  border: 1px solid #dbe5ed;
+}
+.syntax--comment {
+  color: #586b7e;
+  font-style: italic;
+}
+.syntax--keyword {
+  color: #f54784;
+  font-weight: bold;
+}
+.syntax--keyword.syntax--control:not(.syntax--regexp) {
+  color: #dbe5ed;
+}
+.syntax--keyword.syntax--operator {
+  color: rgba(197, 197, 200, 0.7);
+}
+.syntax--keyword.syntax--operator.syntax--assignment:not(.compound) {
+  font-weight: normal;
+}
+.syntax--keyword.syntax--other.syntax--special-method {
+  color: #5b85ff;
+}
+.syntax--keyword.syntax--other.syntax--unit {
+  color: #ffb91b;
+  font-weight: normal;
+}
+.syntax--storage {
+  color: #5b85ff;
+  font-weight: bold;
+}
+.syntax--storage.syntax--function {
+  color: #8c63d9;
+}
+.syntax--storage.syntax--modifier {
+  color: #ed9b50;
+}
+.syntax--storage.syntax--annotation {
+  color: #ffb91b;
+}
+.syntax--storage.syntax--generic {
+  color: #637bc5;
+}
+.syntax--constant {
+  color: #ed9b50;
+}
+.syntax--constant.syntax--character.syntax--escape {
+  color: #ffb91b;
+}
+.syntax--constant.syntax--numeric {
+  color: #ed9b50;
+}
+.syntax--constant.syntax--numeric.syntax--binary {
+  color: #f6aa35;
+}
+.syntax--constant.syntax--numeric.syntax--octal {
+  color: #f2a343;
+}
+.syntax--constant.syntax--numeric.syntax--hexadecimal {
+  color: #ffb91b;
+}
+.syntax--constant.syntax--numeric.syntax--float {
+  color: #e88122;
+}
+.syntax--constant.syntax--boolean,
+.syntax--constant.syntax--null {
+  font-style: italic;
+}
+.syntax--constant.syntax--other.syntax--color {
+  color: #ffb91b;
+}
+.syntax--constant.syntax--other.syntax--symbol {
+  color: #4ebc6b;
+}
+.syntax--variable {
+  color: #f54784;
+}
+.syntax--variable.syntax--meta {
+  color: #c5c5c8;
+}
+.syntax--variable.syntax--this {
+  font-style: italic;
+}
+.syntax--variable.syntax--interpolation {
+  color: #f21764;
+}
+.syntax--variable.syntax--parameter.syntax--function {
+  color: #c5c5c8;
+}
+.syntax--invalid.syntax--illegal {
+  background-color: #f54784;
+  color: #181d22;
+}
+.syntax--string {
+  color: #4ebc6b;
+}
+.syntax--string .syntax--source.syntax--embedded {
+  color: #c5c5c8;
+}
+.syntax--string.syntax--regexp {
+  color: #8c63d9;
+}
+.syntax--string.syntax--regexp .syntax--punctuation.syntax--string {
+  color: #f54784;
+}
+.syntax--string.syntax--regexp .syntax--source.syntax--ruby.syntax--embedded {
+  color: #ed9b50;
+}
+.syntax--string.syntax--other.syntax--link {
+  color: #8c63d9;
+}
+.syntax--string.syntax--math {
+  color: #43c5e5;
+}
+.syntax--punctuation.syntax--definition.syntax--comment {
+  color: #586b7e;
+  font-style: normal;
+}
+.syntax--punctuation.syntax--definition.syntax--variable,
+.syntax--punctuation.syntax--definition.syntax--parameters,
+.syntax--punctuation.syntax--definition.syntax--array {
+  color: #c5c5c8;
+}
+.syntax--punctuation.syntax--definition.syntax--string {
+  color: #46c999;
+}
+.syntax--punctuation.syntax--definition.syntax--heading,
+.syntax--punctuation.syntax--definition.syntax--identity {
+  color: #5b85ff;
+}
+.syntax--punctuation.syntax--definition.syntax--bold {
+  color: #ffb91b;
+  font-weight: bold;
+}
+.syntax--punctuation.syntax--definition.syntax--italic {
+  color: #8c63d9;
+  font-style: italic;
+}
+.syntax--punctuation.syntax--definition.syntax--arguments {
+  color: #637bc5;
+}
+.syntax--punctuation.syntax--definition.syntax--parameters {
+  color: #8c63d9;
+}
+.syntax--punctuation.syntax--section.syntax--embedded {
+  color: #46c999;
+}
+.syntax--punctuation.syntax--terminator,
+.syntax--punctuation.syntax--brace,
+.syntax--punctuation.syntax--tag {
+  opacity: 0.7;
+}
+.syntax--support.syntax--class {
+  color: #ffb91b;
+}
+.syntax--support.syntax--function {
+  color: #5b85ff;
+}
+.syntax--support.syntax--function.syntax--any-method {
+  color: #637bc5;
+}
+.syntax--support.syntax--type {
+  color: #5b85ff;
+}
+.syntax--entity.syntax--name.syntax--function {
+  color: #637bc5;
+}
+.syntax--entity.syntax--name.syntax--type {
+  color: #ffb91b;
+}
+.syntax--entity.syntax--other.syntax--inherited-class {
+  color: #ffb91b;
+  font-style: italic;
+}
+.syntax--entity.syntax--name.syntax--class,
+.syntax--entity.syntax--name.syntax--type.syntax--class {
+  color: #ffb91b;
+}
+.syntax--entity.syntax--name.syntax--section {
+  color: #5b85ff;
+}
+.syntax--entity.syntax--name.syntax--tag {
+  color: #f54784;
+}
+.syntax--entity.syntax--other.syntax--attribute-name {
+  color: #ed9b50;
+  font-style: italic;
+}
+.syntax--entity.syntax--other.syntax--attribute-name.syntax--id {
+  color: #ffb91b;
+}
+.syntax--meta.syntax--link {
+  color: #ed9b50;
+}
+.syntax--meta.syntax--require {
+  color: #637bc5;
+}
+.syntax--meta.syntax--separator {
+  background-color: #586b7e;
+  color: #c5c5c8;
+}
+.syntax--meta.syntax--delimiter.syntax--property {
+  color: #f54784;
+  font-weight: bold;
+}
+.syntax--meta.syntax--delimiter.syntax--method {
+  color: #637bc5;
+  font-weight: bold;
+}
+.syntax--none {
+  color: #c5c5c8;
+}
+.syntax--markup.syntax--bold {
+  color: #ed9b50;
+  font-weight: bold;
+}
+.syntax--markup.syntax--changed {
+  color: #8c63d9;
+}
+.syntax--markup.syntax--deleted {
+  color: #f54784;
+}
+.syntax--markup.syntax--italic {
+  color: #ffb91b;
+  font-style: italic;
+}
+.syntax--markup.syntax--underline {
+  text-decoration: underline;
+}
+.syntax--markup.syntax--strike {
+  color: #8c63d9;
+}
+.syntax--markup.syntax--heading .syntax--punctuation.syntax--definition.syntax--heading {
+  color: #5b85ff;
+}
+.syntax--markup.syntax--inserted {
+  color: #4ebc6b;
+}
+.syntax--markup.syntax--list {
+  color: #f54784;
+}
+.syntax--markup.syntax--quote {
+  color: #ed9b50;
+}
+.syntax--markup.syntax--raw.syntax--inline {
+  color: #4ebc6b;
+}
+.syntax--source.syntax--gfm .syntax--markup {
+  -webkit-font-smoothing: auto;
+}
+.syntax--source.syntax--gfm .syntax--markup.syntax--heading {
+  color: #f54784;
+}
+.syntax--source.syntax--gfm .syntax--markup.syntax--heading .syntax--marker {
+  font-weight: normal;
+  color: #f21764;
+}
+.syntax--source.syntax--gfm .syntax--markup.syntax--heading.syntax--heading-1,
+.syntax--source.syntax--gfm .syntax--markup.syntax--heading.syntax--heading-2 {
+  text-shadow: 0 0.15ex 0 #9b083c;
+}
+.syntax--source.syntax--gfm .syntax--markup.syntax--heading.syntax--heading-1 .syntax--marker,
+.syntax--source.syntax--gfm .syntax--markup.syntax--heading.syntax--heading-2 .syntax--marker {
+  text-shadow: none;
+}
+.syntax--source.syntax--gfm .syntax--markup.syntax--heading.syntax--heading-1 {
+  font-weight: bold;
+}
+.syntax--source.syntax--gfm .syntax--markup.syntax--link {
+  color: #637bc5;
+}
+.syntax--source.syntax--gfm .syntax--markup.syntax--raw {
+  color: #9ca8b4;
+}
+.syntax--source.syntax--gfm .syntax--link .syntax--entity {
+  color: #5b85ff;
+}
+.syntax--source.syntax--gfm .syntax--quote {
+  font-style: normal;
+}
+.syntax--source .syntax--js.syntax--dom {
+  font-style: italic;
+}
+.syntax--source .syntax--js.syntax--yield .syntax--modifier {
+  color: #dbe5ed;
+}
+.syntax--source .syntax--js.syntax--string.syntax--html {
+  color: #c5c5c8;
+}
+.syntax--source .syntax--rust.syntax--type_params {
+  color: #9ca8b4;
+}
+.syntax--source .syntax--less.syntax--at-rule .syntax--punctuation {
+  color: inherit;
+}
+.syntax--source .syntax--css .syntax--id {
+  font-style: normal;
+}
+.syntax--source .syntax--css .syntax--support.syntax--type {
+  color: #dbe5ed;
+}
+pre.editor-colors.editor .syntax--rust .syntax--meta.syntax--attribute {
+  color: #ffb91b;
+  font-style: italic;
+}
+pre.editor-colors.editor .syntax--rust .syntax--storage.syntax--modifier.syntax--lifetime,
+pre.editor-colors.editor .syntax--rust .syntax--entity.syntax--name.syntax--lifetime {
+  color: #43c5e5;
+}
+pre.editor-colors.editor .syntax--rust .syntax--keyword.syntax--unsafe {
+  color: #cb0b4e;
+}
+.bracket-matcher .region {
+  border-bottom: 1px solid #5b85ff;
+}
+.fold-marker::after {
+  color: #5b85ff;
+  font-size: inherit;
+}
+pre.editor-colors[mini] .scroll-view {
+  padding-left: 1px;
+}
+</style>
+  </head>
+  <body class='markdown-preview'><h2>CS 442 Homework 2 - Josh Gribbon</h2>
+<h3>Problem 1</h3>
+<p>Consider a relational database about hotels, customers (guests) and their bookings that are maintained by an on­line hotel­booking company. The database consists of the following tables (where the primary keys are bold):</p>
+<ul>
+<li>Hotel (<strong>hId</strong>, hName, hAddress, hCity)</li>
+<li>Guest(<strong>gId</strong>, gName, gAddress, gCity)</li>
+<li>Room(<strong>hid</strong>, <strong>roomNo</strong>, type, price )</li>
+<li>Booking(<strong>gId</strong>, <strong>hId</strong>, <strong>roomNo</strong>, <strong>fromDate</strong>, <strong>year</strong>, noOfDays)</li>
+</ul>
+<p>The Booking relation indicates that a guest booked a hotel room for a specified number of days (noOfDays) starting from fromDate of a given year. For instance, a tuple &lt;g12345, h5555, 220, Jan05, 2005, 8&gt; in Booking indicates that guest g12345 booked room 220 of the h5555 hotel for 8 days starting on Jan 5, 2005. The attribute “gAddress” records the home address of the guests.</p>
+<p>Write the following queries in relational algebra [5*6pts=30pts]:</p>
+<h4>1.1 Return the name of guests who have booked a hotel room in NYC in January 2017 (tips: &quot;January 2017’ = “Jan01, 2017 to Jan31, 2017”.</h4>
+<span class="math"><script type="math/tex; mode=display">\pi_{gName}(\sigma_{fromDate >= "Jan01, 2017" \wedge fromData <= "Jan31, 2017"}(Guest \bowtie Booking))
+</script></span>
+<h4>1.2 Return the name of guests who have booked a hotel room of type “suite” in NYC for longer than 10 days.</h4>
+<span class="math"><script type="math/tex; mode=display">\pi_{gName}(\sigma_{(type="suite") \wedge (noOfDays > 10) \wedge (hCity="NYC")}(Guest \bowtie Booking \bowtie Room \bowtie Hotel))
+</script></span>
+<h4>1.3 Return the name of guests who never booked a hotel room for longer than 5 days.</h4>
+<span class="math"><script type="math/tex; mode=display">\pi_{gName}(Guest - \pi_{gId, gName, gAddress, gCity}(\sigma_{noOfDays > 5}(Guest \bowtie Booking)))
+</script></span>
+<h4>1.4 Return the IDs of the hotels located in NYC which were not booked at all in the year 2017.</h4>
+<span class="math"><script type="math/tex; mode=display">\pi_{hId}(Hotel - \pi_{hId, hName, hAddress, hCity}(\sigma_{year=2017}(Hotel \bowtie Booking)))
+</script></span>
+<h4>1.5 Return the ids of the guests who have booked at least one room of type “suite” in every hotel located in NYC.</h4>
+<span class="math"><script type="math/tex; mode=display">\rho(NYCHotels, \pi_{hId}(\sigma_{hCity="NYC"}(Hotel))))
+</script></span>
+<span class="math"><script type="math/tex; mode=display">\rho(SuiteBookings, \pi_{gId, hId}(\sigma_{type="suite"}(Booking \bowtie Room)))
+</script></span>
+<span class="math"><script type="math/tex; mode=display">\pi_{gId}(SuiteBookings / NYCHotels)
+</script></span>
+<h3>Problem 2</h3>
+<p>Consider the following relational schema</p>
+<ul>
+<li>Emp(<strong>eid : integer</strong>, ename : string, age : integer, salary : real)</li>
+<li>Works(<strong>eid : integer</strong>, <strong>did : integer</strong>)</li>
+<li>Dept(<strong>did : integer</strong>, budget : real, managerid : integer, dname:string)</li>
+</ul>
+<p>Since the mangers are employers, the did value of the managers in Dept table is the same as the eid value of these managers in Emp table.</p>
+<p>The key fields are bold, and the domain of each field is listed after the field name. The Works relation maps employees to the departments. Write the following queries in SQL [5*6pts=30pts].</p>
+<h4>2.1 Find the name and age of all employees who work in both Hardware and Software departments.</h4>
+<pre class="editor-colors lang-sql"><div class="line"><span class="syntax--source syntax--sql"><span class="syntax--keyword syntax--other syntax--DML syntax--sql"><span>select</span></span><span>&nbsp;</span><span class="syntax--constant syntax--other syntax--database-name syntax--sql"><span>E</span></span><span>.</span><span class="syntax--constant syntax--other syntax--table-name syntax--sql"><span>ename</span></span><span>,&nbsp;</span><span class="syntax--constant syntax--other syntax--database-name syntax--sql"><span>E</span></span><span>.</span><span class="syntax--constant syntax--other syntax--table-name syntax--sql"><span>age</span></span></span>
+</div><div class="line"><span class="syntax--source syntax--sql"><span class="syntax--keyword syntax--other syntax--DML syntax--sql"><span>from</span></span><span>&nbsp;Emp&nbsp;E</span></span>
+</div><div class="line"><span class="syntax--source syntax--sql"><span class="syntax--keyword syntax--other syntax--DML syntax--sql"><span>inner&nbsp;join</span></span><span>&nbsp;Works&nbsp;W1&nbsp;</span><span class="syntax--keyword syntax--other syntax--DDL syntax--create syntax--II syntax--sql"><span>on</span></span><span>&nbsp;</span><span class="syntax--constant syntax--other syntax--database-name syntax--sql"><span>W1</span></span><span>.</span><span class="syntax--constant syntax--other syntax--table-name syntax--sql"><span>eid</span></span><span>&nbsp;</span><span class="syntax--keyword syntax--operator syntax--comparison syntax--sql"><span>=</span></span><span>&nbsp;</span><span class="syntax--constant syntax--other syntax--database-name syntax--sql"><span>E</span></span><span>.</span><span class="syntax--constant syntax--other syntax--table-name syntax--sql"><span>eid</span></span></span>
+</div><div class="line"><span class="syntax--source syntax--sql"><span class="syntax--keyword syntax--other syntax--DML syntax--sql"><span>inner&nbsp;join</span></span><span>&nbsp;Dept&nbsp;D1&nbsp;</span><span class="syntax--keyword syntax--other syntax--DDL syntax--create syntax--II syntax--sql"><span>on</span></span><span>&nbsp;</span><span class="syntax--constant syntax--other syntax--database-name syntax--sql"><span>D1</span></span><span>.</span><span class="syntax--constant syntax--other syntax--table-name syntax--sql"><span>did</span></span><span>&nbsp;</span><span class="syntax--keyword syntax--operator syntax--comparison syntax--sql"><span>=</span></span><span>&nbsp;</span><span class="syntax--constant syntax--other syntax--database-name syntax--sql"><span>W1</span></span><span>.</span><span class="syntax--constant syntax--other syntax--table-name syntax--sql"><span>did</span></span></span>
+</div><div class="line"><span class="syntax--source syntax--sql"><span class="syntax--keyword syntax--other syntax--DML syntax--sql"><span>inner&nbsp;join</span></span><span>&nbsp;Works&nbsp;W2&nbsp;</span><span class="syntax--keyword syntax--other syntax--DDL syntax--create syntax--II syntax--sql"><span>on</span></span><span>&nbsp;</span><span class="syntax--constant syntax--other syntax--database-name syntax--sql"><span>W2</span></span><span>.</span><span class="syntax--constant syntax--other syntax--table-name syntax--sql"><span>eid</span></span><span>&nbsp;</span><span class="syntax--keyword syntax--operator syntax--comparison syntax--sql"><span>=</span></span><span>&nbsp;</span><span class="syntax--constant syntax--other syntax--database-name syntax--sql"><span>E</span></span><span>.</span><span class="syntax--constant syntax--other syntax--table-name syntax--sql"><span>eid</span></span></span>
+</div><div class="line"><span class="syntax--source syntax--sql"><span class="syntax--keyword syntax--other syntax--DML syntax--sql"><span>inner&nbsp;join</span></span><span>&nbsp;Dept&nbsp;D2&nbsp;</span><span class="syntax--keyword syntax--other syntax--DDL syntax--create syntax--II syntax--sql"><span>on</span></span><span>&nbsp;</span><span class="syntax--constant syntax--other syntax--database-name syntax--sql"><span>D2</span></span><span>.</span><span class="syntax--constant syntax--other syntax--table-name syntax--sql"><span>did</span></span><span>&nbsp;</span><span class="syntax--keyword syntax--operator syntax--comparison syntax--sql"><span>=</span></span><span>&nbsp;</span><span class="syntax--constant syntax--other syntax--database-name syntax--sql"><span>W2</span></span><span>.</span><span class="syntax--constant syntax--other syntax--table-name syntax--sql"><span>did</span></span></span>
+</div><div class="line"><span class="syntax--source syntax--sql"><span class="syntax--keyword syntax--other syntax--DML syntax--sql"><span>where</span></span><span>&nbsp;</span><span class="syntax--constant syntax--other syntax--database-name syntax--sql"><span>D1</span></span><span>.</span><span class="syntax--constant syntax--other syntax--table-name syntax--sql"><span>dname</span></span><span>&nbsp;</span><span class="syntax--keyword syntax--operator syntax--comparison syntax--sql"><span>=</span></span><span>&nbsp;</span><span class="syntax--string syntax--quoted syntax--single syntax--sql"><span class="syntax--punctuation syntax--definition syntax--string syntax--begin syntax--sql"><span>&#39;</span></span><span>Hardware</span><span class="syntax--punctuation syntax--definition syntax--string syntax--end syntax--sql"><span>&#39;</span></span></span></span>
+</div><div class="line"><span class="syntax--source syntax--sql"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="syntax--keyword syntax--other syntax--DML syntax--sql"><span>and</span></span><span>&nbsp;</span><span class="syntax--constant syntax--other syntax--database-name syntax--sql"><span>D2</span></span><span>.</span><span class="syntax--constant syntax--other syntax--table-name syntax--sql"><span>dname</span></span><span>&nbsp;</span><span class="syntax--keyword syntax--operator syntax--comparison syntax--sql"><span>=</span></span><span>&nbsp;</span><span class="syntax--string syntax--quoted syntax--single syntax--sql"><span class="syntax--punctuation syntax--definition syntax--string syntax--begin syntax--sql"><span>&#39;</span></span><span>Software</span><span class="syntax--punctuation syntax--definition syntax--string syntax--end syntax--sql"><span>&#39;</span></span></span></span>
+</div></pre>
+<h4>2.2 Find the id of managers who control the largest amount of budget.</h4>
+<pre class="editor-colors lang-sql"><div class="line"><span class="syntax--source syntax--sql"><span class="syntax--keyword syntax--other syntax--DML syntax--sql"><span>select</span></span><span>&nbsp;managerid</span></span>
+</div><div class="line"><span class="syntax--source syntax--sql"><span class="syntax--keyword syntax--other syntax--DML syntax--sql"><span>from</span></span><span>&nbsp;Dept</span></span>
+</div><div class="line"><span class="syntax--source syntax--sql"><span class="syntax--keyword syntax--other syntax--DML syntax--sql"><span>order&nbsp;by</span></span><span>&nbsp;budget</span></span>
+</div></pre>
+<h4>2.3 Find the id of the managers who manage only the departments of budget that is at least 1 million dollars.</h4>
+<pre class="editor-colors lang-sql"><div class="line"><span class="syntax--source syntax--sql"><span class="syntax--keyword syntax--other syntax--DML syntax--sql"><span>select</span></span><span>&nbsp;managerid</span></span>
+</div><div class="line"><span class="syntax--source syntax--sql"><span class="syntax--keyword syntax--other syntax--DML syntax--sql"><span>from</span></span><span>&nbsp;Dept</span></span>
+</div><div class="line"><span class="syntax--source syntax--sql"><span class="syntax--keyword syntax--other syntax--DML syntax--sql"><span>where</span></span><span>&nbsp;budget&nbsp;</span><span class="syntax--keyword syntax--operator syntax--comparison syntax--sql"><span>&gt;=</span></span><span>&nbsp;</span><span class="syntax--constant syntax--numeric syntax--sql"><span>1000000</span></span></span>
+</div></pre>
+<h4>2.4 Find the name of all employees whose salary exceeds the budget of all the departments that the employee works in.</h4>
+<pre class="editor-colors lang-sql"><div class="line"><span class="syntax--source syntax--sql"><span class="syntax--keyword syntax--other syntax--DML syntax--sql"><span>select</span></span><span>&nbsp;</span><span class="syntax--constant syntax--other syntax--database-name syntax--sql"><span>E</span></span><span>.</span><span class="syntax--constant syntax--other syntax--table-name syntax--sql"><span>ename</span></span></span>
+</div><div class="line"><span class="syntax--source syntax--sql"><span class="syntax--keyword syntax--other syntax--DML syntax--sql"><span>from</span></span><span>&nbsp;Emp&nbsp;E</span></span>
+</div><div class="line"><span class="syntax--source syntax--sql"><span class="syntax--keyword syntax--other syntax--DML syntax--sql"><span>where</span></span><span>&nbsp;</span><span class="syntax--constant syntax--other syntax--database-name syntax--sql"><span>E</span></span><span>.</span><span class="syntax--constant syntax--other syntax--table-name syntax--sql"><span>salary</span></span><span>&nbsp;</span><span class="syntax--keyword syntax--operator syntax--comparison syntax--sql"><span>&gt;</span></span><span>&nbsp;(</span></span>
+</div><div class="line"><span class="syntax--source syntax--sql"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="syntax--keyword syntax--other syntax--DML syntax--sql"><span>select</span></span><span>&nbsp;</span><span class="syntax--support syntax--function syntax--aggregate syntax--sql"><span>max</span></span><span>(budget)</span></span>
+</div><div class="line"><span class="syntax--source syntax--sql"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="syntax--keyword syntax--other syntax--DML syntax--sql"><span>from</span></span><span>&nbsp;Dept&nbsp;D</span></span>
+</div><div class="line"><span class="syntax--source syntax--sql"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="syntax--keyword syntax--other syntax--DML syntax--sql"><span>inner&nbsp;join</span></span><span>&nbsp;Works&nbsp;W&nbsp;</span><span class="syntax--keyword syntax--other syntax--DDL syntax--create syntax--II syntax--sql"><span>on</span></span><span>&nbsp;</span><span class="syntax--constant syntax--other syntax--database-name syntax--sql"><span>D</span></span><span>.</span><span class="syntax--constant syntax--other syntax--table-name syntax--sql"><span>did</span></span><span>&nbsp;</span><span class="syntax--keyword syntax--operator syntax--comparison syntax--sql"><span>=</span></span><span>&nbsp;</span><span class="syntax--constant syntax--other syntax--database-name syntax--sql"><span>W</span></span><span>.</span><span class="syntax--constant syntax--other syntax--table-name syntax--sql"><span>did</span></span></span>
+</div><div class="line"><span class="syntax--source syntax--sql"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="syntax--keyword syntax--other syntax--DML syntax--sql"><span>where</span></span><span>&nbsp;</span><span class="syntax--constant syntax--other syntax--database-name syntax--sql"><span>W</span></span><span>.</span><span class="syntax--constant syntax--other syntax--table-name syntax--sql"><span>eid</span></span><span>&nbsp;</span><span class="syntax--keyword syntax--operator syntax--comparison syntax--sql"><span>=</span></span><span>&nbsp;</span><span class="syntax--constant syntax--other syntax--database-name syntax--sql"><span>E</span></span><span>.</span><span class="syntax--constant syntax--other syntax--table-name syntax--sql"><span>eid</span></span></span>
+</div><div class="line"><span class="syntax--source syntax--sql"><span>)</span></span>
+</div></pre>
+<h4>2.5 Find the name of managers who manage the department of the largest budgets.</h4>
+<pre class="editor-colors lang-sql"><div class="line"><span class="syntax--source syntax--sql"><span class="syntax--keyword syntax--other syntax--DML syntax--sql"><span>select</span></span><span>&nbsp;</span><span class="syntax--constant syntax--other syntax--database-name syntax--sql"><span>E</span></span><span>.</span><span class="syntax--constant syntax--other syntax--table-name syntax--sql"><span>ename</span></span></span>
+</div><div class="line"><span class="syntax--source syntax--sql"><span class="syntax--keyword syntax--other syntax--DML syntax--sql"><span>from</span></span><span>&nbsp;Emp&nbsp;E</span></span>
+</div><div class="line"><span class="syntax--source syntax--sql"><span class="syntax--keyword syntax--other syntax--DML syntax--sql"><span>inner&nbsp;join</span></span><span>&nbsp;Works&nbsp;W&nbsp;</span><span class="syntax--keyword syntax--other syntax--DDL syntax--create syntax--II syntax--sql"><span>on</span></span><span>&nbsp;</span><span class="syntax--constant syntax--other syntax--database-name syntax--sql"><span>E</span></span><span>.</span><span class="syntax--constant syntax--other syntax--table-name syntax--sql"><span>eid</span></span><span>&nbsp;</span><span class="syntax--keyword syntax--operator syntax--comparison syntax--sql"><span>=</span></span><span>&nbsp;</span><span class="syntax--constant syntax--other syntax--database-name syntax--sql"><span>W</span></span><span>.</span><span class="syntax--constant syntax--other syntax--table-name syntax--sql"><span>eid</span></span></span>
+</div><div class="line"><span class="syntax--source syntax--sql"><span class="syntax--keyword syntax--other syntax--DML syntax--sql"><span>inner&nbsp;join</span></span><span>&nbsp;Dept&nbsp;D&nbsp;</span><span class="syntax--keyword syntax--other syntax--DDL syntax--create syntax--II syntax--sql"><span>on</span></span><span>&nbsp;</span><span class="syntax--constant syntax--other syntax--database-name syntax--sql"><span>W</span></span><span>.</span><span class="syntax--constant syntax--other syntax--table-name syntax--sql"><span>did</span></span><span>&nbsp;</span><span class="syntax--keyword syntax--operator syntax--comparison syntax--sql"><span>=</span></span><span>&nbsp;</span><span class="syntax--constant syntax--other syntax--database-name syntax--sql"><span>D</span></span><span>.</span><span class="syntax--constant syntax--other syntax--table-name syntax--sql"><span>did</span></span></span>
+</div><div class="line"><span class="syntax--source syntax--sql"><span class="syntax--keyword syntax--other syntax--DML syntax--sql"><span>order&nbsp;by</span></span><span>&nbsp;</span><span class="syntax--constant syntax--other syntax--database-name syntax--sql"><span>D</span></span><span>.</span><span class="syntax--constant syntax--other syntax--table-name syntax--sql"><span>budget</span></span></span>
+</div></pre>
+<h3>Problem 3</h3>
+<p>Consider a relational database about real estate that is maintained by a real estate agency. The database consists of the following table (where the primary keys are bold):</p>
+<ul>
+<li>House (<strong>id</strong>, asking_price, address, postal_code, baths, beds, sqft, sellerID)</li>
+<li>Seller(<strong>id</strong>, name, home_phone, e­mail, agentID)</li>
+<li>Buyer(<strong>id</strong>, name, home_phone, e­mail, agentID)</li>
+<li>Agent(<strong>id</strong>, name, mobile_phone, e­mail)</li>
+<li>Sold(<strong>house_id</strong>, <strong>buyer_id</strong>, <strong>sale­date</strong>, selling_price)</li>
+</ul>
+<p>The House table gives information about a house for sale. The Seller table gives information about the sellers of a house. The Buyer table gives information about (prospective) home buyers. The Agent table gives information about agents (who can act on behalf of either the buyer or the seller). And the Sold table gives information about the sale of a particular home – including the price at which the home actually sold, which may be different from the asking price.</p>
+<h4>3.1 Answer the following questions in relational algebra [2*10pts=20pts]:</h4>
+<h5>3.1.a Return the id, addresses, asking_price, and selling_price of all houses that are sold at price  less than the asking price.</h5>
+<span class="math"><script type="math/tex; mode=display">\rho(GoodDeals, \sigma_{selling\_price < asking\_price}(Sold \bowtie \pi_{\rho(id, house\_id), asking\_price, address}(House)))
+</script></span>
+<span class="math"><script type="math/tex; mode=display">\pi_{\rho(house\_id, id), address, asking\_price, selling\_price}(GoodDeals)
+</script></span>
+<h5>3.1.b Return the names of all of (prospective) buyers who have not bought a house.</h5>
+<span class="math"><script type="math/tex; mode=display">\rho(NotYetIds, \pi_{id}(Buyer) - \pi_{\rho(buyer_id, id)}(Sold))
+</script></span>
+<span class="math"><script type="math/tex; mode=display">\pi_{name}(Buyer \bowtie NotYetIds)
+</script></span>
+<h4>3.2 Answer the following questions in SQL [2*10pts=20pts]:</h4>
+<h5>3.2.a For each postal code in which there were at least three houses sold, find the postal code and the  average selling price of houses in that postal code.</h5>
+<pre class="editor-colors lang-sql"><div class="line"><span class="syntax--source syntax--sql"><span class="syntax--keyword syntax--other syntax--DML syntax--sql"><span>select</span></span><span>&nbsp;</span><span class="syntax--constant syntax--other syntax--database-name syntax--sql"><span>H</span></span><span>.</span><span class="syntax--constant syntax--other syntax--table-name syntax--sql"><span>postal_code</span></span><span>,&nbsp;</span><span class="syntax--support syntax--function syntax--aggregate syntax--sql"><span>avg</span></span><span>(</span><span class="syntax--constant syntax--other syntax--database-name syntax--sql"><span>S</span></span><span>.</span><span class="syntax--constant syntax--other syntax--table-name syntax--sql"><span>selling_price</span></span><span>)&nbsp;</span><span class="syntax--keyword syntax--other syntax--alias syntax--sql"><span>as</span></span><span>&nbsp;avg_selling_price</span></span>
+</div><div class="line"><span class="syntax--source syntax--sql"><span class="syntax--keyword syntax--other syntax--DML syntax--sql"><span>from</span></span><span>&nbsp;House&nbsp;H</span></span>
+</div><div class="line"><span class="syntax--source syntax--sql"><span class="syntax--keyword syntax--other syntax--DML syntax--sql"><span>inner&nbsp;join</span></span><span>&nbsp;Sold&nbsp;S&nbsp;</span><span class="syntax--keyword syntax--other syntax--DDL syntax--create syntax--II syntax--sql"><span>on</span></span><span>&nbsp;</span><span class="syntax--constant syntax--other syntax--database-name syntax--sql"><span>H</span></span><span>.</span><span class="syntax--constant syntax--other syntax--table-name syntax--sql"><span>id</span></span><span>&nbsp;</span><span class="syntax--keyword syntax--operator syntax--comparison syntax--sql"><span>=</span></span><span>&nbsp;</span><span class="syntax--constant syntax--other syntax--database-name syntax--sql"><span>S</span></span><span>.</span><span class="syntax--constant syntax--other syntax--table-name syntax--sql"><span>house_id</span></span></span>
+</div><div class="line"><span class="syntax--source syntax--sql"><span class="syntax--keyword syntax--other syntax--DML syntax--sql"><span>group&nbsp;by</span></span><span>&nbsp;</span><span class="syntax--constant syntax--other syntax--database-name syntax--sql"><span>H</span></span><span>.</span><span class="syntax--constant syntax--other syntax--table-name syntax--sql"><span>postal_code</span></span></span>
+</div><div class="line"><span class="syntax--source syntax--sql"><span class="syntax--keyword syntax--other syntax--DML syntax--sql"><span>having</span></span><span>&nbsp;</span><span class="syntax--support syntax--function syntax--aggregate syntax--sql"><span>count</span></span><span>(</span><span class="syntax--constant syntax--other syntax--database-name syntax--sql"><span>H</span></span><span>.</span><span class="syntax--constant syntax--other syntax--table-name syntax--sql"><span>id</span></span><span>)&nbsp;</span><span class="syntax--keyword syntax--operator syntax--comparison syntax--sql"><span>&gt;=</span></span><span>&nbsp;</span><span class="syntax--constant syntax--numeric syntax--sql"><span>3</span></span></span>
+</div></pre>
+<h5>3.2.b Find the addresses and asking prices of all houses that have at least 4 bedrooms and 2 bathrooms that have not been sold. Each (address, asking price) pair should appear only once.</h5>
+<pre class="editor-colors lang-sql"><div class="line"><span class="syntax--source syntax--sql"><span class="syntax--keyword syntax--other syntax--DML syntax--sql"><span>select&nbsp;distinct</span></span><span>&nbsp;</span><span class="syntax--constant syntax--other syntax--database-name syntax--sql"><span>H</span></span><span>.</span><span class="syntax--constant syntax--other syntax--table-name syntax--sql"><span>address</span></span><span>,&nbsp;</span><span class="syntax--constant syntax--other syntax--database-name syntax--sql"><span>H</span></span><span>.</span><span class="syntax--constant syntax--other syntax--table-name syntax--sql"><span>asking_price</span></span></span>
+</div><div class="line"><span class="syntax--source syntax--sql"><span class="syntax--keyword syntax--other syntax--DML syntax--sql"><span>from</span></span><span>&nbsp;House&nbsp;H</span></span>
+</div><div class="line"><span class="syntax--source syntax--sql"><span class="syntax--keyword syntax--other syntax--DML syntax--sql"><span>left&nbsp;join</span></span><span>&nbsp;Sold&nbsp;S&nbsp;</span><span class="syntax--keyword syntax--other syntax--DDL syntax--create syntax--II syntax--sql"><span>on</span></span><span>&nbsp;</span><span class="syntax--constant syntax--other syntax--database-name syntax--sql"><span>H</span></span><span>.</span><span class="syntax--constant syntax--other syntax--table-name syntax--sql"><span>id</span></span><span>&nbsp;</span><span class="syntax--keyword syntax--operator syntax--comparison syntax--sql"><span>=</span></span><span>&nbsp;</span><span class="syntax--constant syntax--other syntax--database-name syntax--sql"><span>S</span></span><span>.</span><span class="syntax--constant syntax--other syntax--table-name syntax--sql"><span>house_id</span></span></span>
+</div><div class="line"><span class="syntax--source syntax--sql"><span class="syntax--keyword syntax--other syntax--DML syntax--sql"><span>where</span></span><span>&nbsp;</span><span class="syntax--constant syntax--other syntax--database-name syntax--sql"><span>H</span></span><span>.</span><span class="syntax--constant syntax--other syntax--table-name syntax--sql"><span>beds</span></span><span>&nbsp;</span><span class="syntax--keyword syntax--operator syntax--comparison syntax--sql"><span>&gt;=</span></span><span>&nbsp;</span><span class="syntax--constant syntax--numeric syntax--sql"><span>4</span></span></span>
+</div><div class="line"><span class="syntax--source syntax--sql"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="syntax--keyword syntax--other syntax--DML syntax--sql"><span>and</span></span><span>&nbsp;</span><span class="syntax--constant syntax--other syntax--database-name syntax--sql"><span>H</span></span><span>.</span><span class="syntax--constant syntax--other syntax--table-name syntax--sql"><span>baths</span></span><span>&nbsp;</span><span class="syntax--keyword syntax--operator syntax--comparison syntax--sql"><span>&gt;=</span></span><span>&nbsp;</span><span class="syntax--constant syntax--numeric syntax--sql"><span>2</span></span></span>
+</div><div class="line"><span class="syntax--source syntax--sql"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="syntax--keyword syntax--other syntax--DML syntax--sql"><span>and</span></span><span>&nbsp;</span><span class="syntax--constant syntax--other syntax--database-name syntax--sql"><span>S</span></span><span>.</span><span class="syntax--constant syntax--other syntax--table-name syntax--sql"><span>house_id</span></span><span>&nbsp;</span><span class="syntax--keyword syntax--other syntax--DDL syntax--create syntax--II syntax--sql"><span>is&nbsp;null</span></span></span>
+</div></pre></body>
+</html>
