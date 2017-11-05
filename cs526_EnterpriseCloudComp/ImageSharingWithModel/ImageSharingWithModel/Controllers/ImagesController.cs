@@ -11,115 +11,88 @@ using System.Data.Entity;
 using ImageSharingWithModel.Models;
 using ImageSharingWithModel.DAL;
 
-namespace ImageSharingWithModel.Controllers
-{
-    public class ImagesController : BaseController
-    {
+namespace ImageSharingWithModel.Controllers {
+    public class ImagesController : BaseController {
         private ImageSharingDB db = new ImageSharingDB();
 
         [HttpGet]
-        public ActionResult Upload()
-        {
+        public ActionResult Upload() {
             CheckAda();
-            ViewBag.Message = "";
-            ViewBag.tags = new SelectList(db.Tags, "Id", "Name", 1);
-            return View();
+            if (GetLoggedInUser() == null) {
+                return ForceLogin();
+            } else {
+                ViewBag.Message = "";
+                ViewBag.Tags = new SelectList(db.Tags, "Id", "Name", 1);
+                return View();
+            }
         }
 
         [HttpPost, ActionName("Upload")]
         public ActionResult UploadPost(ImageView image,
-                                       HttpPostedFileBase ImageFile)
-        {
+                                       HttpPostedFileBase ImageFile) {
             CheckAda();
+            ViewBag.Tags = new SelectList(db.Tags, "Id", "Name", 1);
 
-            if (ModelState.IsValid)
-            {
-                HttpCookie cookie = Request.Cookies.Get("ImageSharing");
-                if (cookie != null)
-                {
-                    image.UserId = cookie["UserID"];
-                    User user = db.Users.SingleOrDefault(u => u.Id.Equals(image.UserId));
+            String userid = GetLoggedInUser();
+            if (userid == null) {
+                return ForceLogin();
+            } else {
+                User user = db.Users.SingleOrDefault(u => u.UserId.Equals(userid));
+                if (ModelState.IsValid) {
+                    /*
+                    * Save image information in the database
+                    */
+                    Image imageEntity = new Image();
+                    imageEntity.Caption = image.Caption;
+                    imageEntity.Description = image.Description;
+                    imageEntity.DateTaken = image.DateTaken;
 
-                    if (user != null)
-                    {
-                        /*
-                         * Save image information in the database
-                         */
-                        Image imageEntity = new Image();
-                        imageEntity.Caption = image.Caption;
-                        imageEntity.Description = image.Description;
-                        imageEntity.DateTaken = image.DateTaken;
+                    imageEntity.User = user;
 
-                        imageEntity.User = user;
+                    imageEntity.TagId = image.TagId;
 
-                        imageEntity.TagId = image.TagId;
+                    if (ImageFile != null && ImageFile.ContentLength > 0) {
+                        db.Images.Add(imageEntity);
+                        db.SaveChanges();
 
-                        if (ImageFile != null && ImageFile.ContentLength > 0)
-                        {
-                            db.Images.Add(imageEntity);
-                            db.SaveChanges();
+                        String imgFileName = Server.MapPath("~/Content/Images/img-" + imageEntity.Id + ".jpg");
+                        ImageFile.SaveAs(imgFileName);
 
-                            String imgFileName = Server.MapPath("~/Content/Images/img-" + imageEntity.Id + ".jpg");
-                            ImageFile.SaveAs(imgFileName);
-
-                            //return View("Details", image);
-                            return RedirectToAction("Details", imageEntity.Id);
-                        }
-                        else
-                        {
-                            ViewBag.Message = "No image file specified!";
-                            return View();
-                        }
-                    }else
-                    {
-                        ViewBag.Message = "No such userid registered!";
+                        //return View("Details", image);
+                        return RedirectToAction("Details", new { Id = imageEntity.Id });
+                    } else {
+                        ViewBag.Message = "No image file specified!";
                         return View();
                     }
-                }
-                else
-                {
-                    ViewBag.Message = "Plase register before uploading.";
+                } else {
+                    ViewBag.Message = "Please correct errors in the form.";
                     return View();
                 }
-            }
-            else
-            {
-                ViewBag.Message = "Please correct errors in the form.";
-                return View();
             }
 
         }
 
         [HttpGet]
-        public ActionResult Query()
-        {
+        public ActionResult Query() {
             CheckAda();
             ViewBag.Message = "";
 
             HttpCookie cookie = Request.Cookies.Get("ImageSharing");
-            if (cookie == null)
-            {
+            if (cookie == null) {
                 return RedirectToAction("Register", "Account");
-            }
-            else
-            {
+            } else {
                 return View();
             }
         }
 
         [HttpGet]
-        public ActionResult Details(int Id)
-        {
+        public ActionResult Details(int Id) {
             CheckAda();
-            if(GetLoggedInUser() == null)
-            {
+            if (GetLoggedInUser() == null) {
                 return ForceLogin();
-            }
-            else
-            {
+            } else {
                 Image imageEntity = db.Images.Find(Id);
-                if (imageEntity != null)
-                {
+                if (imageEntity != null) {
                     ImageView imageView = new ImageView();
                     imageView.Id = imageEntity.Id;
                     imageView.Caption = imageEntity.Caption;
@@ -128,30 +101,22 @@ namespace ImageSharingWithModel.Controllers
                     imageView.TagName = imageEntity.Tag.Name;
                     imageView.UserId = imageEntity.User.UserId;
                     return View(imageView);
-                }
-                else
-                {
+                } else {
                     return RedirectToAction("Error", "Home", new { errid = "Details" });
                 }
             }
         }
 
         [HttpGet]
-        public ActionResult Edit(int Id)
-        {
+        public ActionResult Edit(int Id) {
             CheckAda();
-            if (GetLoggedInUser() == null)
-            {
+            if (GetLoggedInUser() == null) {
                 return ForceLogin();
-            }
-            else
-            {
+            } else {
                 Image imageEntity = db.Images.Find(Id);
-                if (imageEntity != null)
-                {
+                if (imageEntity != null) {
                     HttpCookie cookie = Request.Cookies.Get("ImageSharing");
-                    if (cookie != null && imageEntity.User.UserId.Equals(cookie["UserId"]))
-                    {
+                    if (cookie != null && imageEntity.User.UserId.Equals(cookie["UserId"])) {
                         ViewBag.Message = "";
                         ViewBag.Tags = new SelectList(db.Tags, "Id", "Name", imageEntity.TagId);
 
@@ -163,35 +128,25 @@ namespace ImageSharingWithModel.Controllers
                         imageView.DateTaken = imageEntity.DateTaken;
 
                         return View("Edit", imageView);
-                    }
-                    else
-                    {
+                    } else {
                         return RedirectToAction("Error", "Home", new { errid = "EditNotAuth" });
                     }
-                }
-                else
-                {
+                } else {
                     return RedirectToAction("Error", "Home", new { errid = "EditNotFound" });
                 }
             }
         }
 
         [HttpPost, ActionName("Edit")]
-        public ActionResult EditPost(ImageView image)
-        {
+        public ActionResult EditPost(int Id, ImageView image) {
             CheckAda();
             String userid = GetLoggedInUser();
-            if (userid == null)
-            {
+            if (userid == null) {
                 return ForceLogin();
-            }
-            else
-            {
-                if (ModelState.IsValid)
-                {
-                    Image imageEntity = db.Images.Find(image.Id);
-                    if (imageEntity != null)
-                    {
+            } else {
+                if (ModelState.IsValid) {
+                    Image imageEntity = db.Images.Find(Id);
+                    if (imageEntity != null) {
                         imageEntity.TagId = image.TagId;
                         imageEntity.Caption = image.Caption;
                         imageEntity.Description = image.Description;
@@ -200,70 +155,51 @@ namespace ImageSharingWithModel.Controllers
                         db.Entry(imageEntity).State = EntityState.Modified;
                         db.SaveChanges();
 
-                        return RedirectToAction("Details", new { Id = image.Id });
-                    }
-                    else
-                    {
+                        return RedirectToAction("Details", new { Id = Id });
+                    } else {
                         return RedirectToAction("Error", "Home", new { errid = "EditNotFound" });
                     }
-                }
-                else
-                {
+                } else {
                     return View("Edit", image);
                 }
             }
         }
 
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeletePost(FormCollection values, int Id)
-        {
+        public ActionResult DeletePost(FormCollection values, int Id) {
             /*
              * FormCollection is just here to clear up the overloading
              * of the Delete action for GET and POST
              */
             CheckAda();
             String userid = GetLoggedInUser();
-            if (userid != null)
-            {
+            if (userid != null) {
                 Image imageEntity = db.Images.Find(Id);
-                if (imageEntity != null)
-                {
-                    if (imageEntity.User.UserId.Equals(userid))
-                    {
+                if (imageEntity != null) {
+                    if (imageEntity.User.UserId.Equals(userid)) {
                         //db.Entry(imageEntity).State = EntityState.Deleted;
                         db.Images.Remove(imageEntity);
                         db.SaveChanges();
                         return RedirectToAction("Index", "Home");
-                    }
-                    else
-                    {
+                    } else {
                         return RedirectToAction("Error", "Home", new { errid = "DeleteNotAuth" });
                     }
-                }
-                else
-                {
+                } else {
                     return RedirectToAction("Error", "Home", new { errid = "DeleteNotFound" });
                 }
-            }
-            else
-            {
+            } else {
                 return ForceLogin();
             }
         }
 
         [HttpGet]
-        public ActionResult Delete(int Id)
-        {
+        public ActionResult Delete(int Id) {
             CheckAda();
-            if (GetLoggedInUser() == null)
-            {
+            if (GetLoggedInUser() == null) {
                 return ForceLogin();
-            }
-            else
-            {
+            } else {
                 Image imageEntity = db.Images.Find(Id);
-                if (imageEntity != null)
-                {
+                if (imageEntity != null) {
                     ImageView imageView = new ImageView();
                     imageView.Id = imageEntity.Id;
                     imageView.Caption = imageEntity.Caption;
@@ -272,93 +208,71 @@ namespace ImageSharingWithModel.Controllers
                     imageView.TagName = imageEntity.Tag.Name;
                     imageView.UserId = imageEntity.User.UserId;
                     return View(imageView);
-                }
-                else
-                {
+                } else {
                     return RedirectToAction("Error", "Home", new { errid = "Delete" });
                 }
             }
         }
 
         [HttpGet]
-        public ActionResult ListAll()
-        {
+        public ActionResult ListAll() {
             CheckAda();
             IEnumerable<Image> images = db.Images.ToList();
             String userid = GetLoggedInUser();
-            if(userid != null)
-            {
+            if (userid != null) {
                 ViewBag.UserId = userid;
                 return View(images);
-            }
-            else
-            {
+            } else {
                 return RedirectToAction("Login", "Account");
             }
         }
 
         [HttpGet]
-        public ActionResult ListByUser()
-        {
+        public ActionResult ListByUser() {
             CheckAda();
             SelectList users = new SelectList(db.Users, "Id", "UserId", 1);
             return View(users);
         }
 
         [HttpGet]
-        public ActionResult DoListByUser(int Id)
-        {
+        public ActionResult DoListByUser(int Id) {
             CheckAda();
             String userid = GetLoggedInUser();
-            if (userid != null)
-            {
+            if (userid != null) {
                 User user = db.Users.Find(Id);
-                if (user != null)
-                {
+                if (user != null) {
 
                     ViewBag.UserId = userid;
                     return View("ListAll", user.Images);
-                }
-                else
-                {
+                } else {
                     return RedirectToAction("Error", "Home", new { errid = "ListByUser" });
                 }
-            }
-            else
-            {
+            } else {
                 return RedirectToAction("Login", "Account");
             }
         }
 
         [HttpGet]
-        public ActionResult ListByTag()
-        {
+        public ActionResult ListByTag() {
             CheckAda();
             SelectList tags = new SelectList(db.Tags, "Id", "Name", 1);
             return View(tags);
         }
 
         [HttpGet]
-        public ActionResult DoListByTag(int Id)
-        {
+        public ActionResult DoListByTag(int Id) {
             CheckAda();
             String userid = GetLoggedInUser();
-            if (userid != null)
-            {
+            if (userid != null) {
                 Tag tag = db.Tags.Find(Id);
-                if (tag != null)
-                {
+                if (tag != null) {
 
                     ViewBag.UserId = userid;
                     return View("ListAll", tag.Images);
-                }
-                else
-                {
+                } else {
                     return RedirectToAction("Error", "Home", new { errid = "ListByUser" });
                 }
-            }
-            else
-            {
+            } else {
                 return RedirectToAction("Login", "Account");
             }
         }

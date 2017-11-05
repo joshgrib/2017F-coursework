@@ -4,37 +4,26 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace ImageSharingWithModel.Controllers
-{
-    public class BaseController : Controller
-    {
-        protected void CheckAda()
-        {
+namespace ImageSharingWithModel.Controllers {
+    public class BaseController : Controller {
+        protected void CheckAda() {
             HttpCookie cookie = Request.Cookies.Get("ImageSharing");
-            if (cookie != null)
-            {
+            if (cookie != null) {
                 ViewBag.isADA = "true".Equals(cookie["ADA"]);
-            }
-            else
-            {
+            } else {
                 ViewBag.isADA = false;
             }
         }
-        protected String GetLoggedInUser()
-        {
+        protected String GetLoggedInUser() {
             HttpCookie cookie = Request.Cookies.Get("ImageSharing");
-            if(cookie != null && cookie["UserId"] != null)
-            {
+            if (cookie != null && cookie["UserId"] != null) {
                 return cookie["UserId"];
-            }
-            else
-            {
+            } else {
                 return null;
             }
         }
 
-        protected ActionResult ForceLogin()
-        {
+        protected ActionResult ForceLogin() {
             return RedirectToAction("Login", "Account");
         }
     }

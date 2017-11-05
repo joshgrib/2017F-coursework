@@ -38,7 +38,7 @@ namespace ImageSharingWithModel.Controllers
                 ViewBag.Message = "Problem with Details action!";
             } else if ("EditNotFound".Equals(errid))
             {
-                ViewBag.Message = "User not found!";
+                ViewBag.Message = "Record not found!";
             }else if ("EditNotAuth".Equals(errid))
             {
                 ViewBag.Message = "User not authorized!";
