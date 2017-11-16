@@ -82,6 +82,7 @@ namespace ImageSharingWithModel.Controllers
                 return View("Login");
             }
         }
+        
         protected void SaveCookie(string UserID, bool ADA)
         {
             //save user to cookie

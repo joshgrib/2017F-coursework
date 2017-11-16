@@ -1,0 +1,42 @@
+﻿@model ImageSharingWithAuth.Models.ImageView
+@{
+    ViewBag.Title = "Edit Image";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@{ Html.BeginForm("Edit", "Image", FormMethod.Post); }
+
+@Html.AntiForgeryToken()
+
+<fieldset>
+    <legend>Edit Image Information</legend>
+    <img src="@Url.Content("~/Content/Images/img-"+Model.Id+".jpg")" alt="Alternate Text" />
+
+    <p>Image Id: @Model.Id</p>
+    @Html.HiddenFor(m => m.Id)
+
+    <p>
+        Caption: @Html.TextBoxFor(m => m.Caption)
+        @Html.ValidationMessageFor(m => m.Caption)
+    </p>
+    <p>
+        Select A Tag: @Html.DropDownListFor(m => m.TagId, ViewBag.Tags as SelectList)
+    </p>
+    <p>
+        Description:<br />
+        @Html.TextAreaFor(m => m.Description, 5, 40, null)
+        @Html.ValidationMessageFor(m => m.Description)
+    </p>
+    <p>
+        Date Taken: @Html.TextBoxFor(m => m.DateTaken)
+        @Html.ValidationMessageFor(m => m.DateTaken)
+    </p>
+
+    <input type="submit" value="Save Changes" />
+</fieldset>
+
+<p>@ViewBag.Message</p>
+<p>@Html.ValidationSummary()</p>
+
+@{ Html.EndForm(); }
