@@ -23,40 +23,43 @@ def calc_phi(p, q):
 
 def modexp(b, e, m):
     # returns b^e % m efficiently
-    # use the binary modular exponentiation algorithm explained in the lab slides
-    # Complete this part during the lab
-    return 0
+    if m == 1: return 0
+    result = 1
+    b = b % m
+    while( e > 0 ):
+        if(e%2 == 1):
+            result = (result*b)%m
+        e = e >> 1
+        b = (b * b) % m
+    return result
 
 def RSA_enc(plaintext, key):
     # key should be a tuple (n, e)
-    # the ord() function will be useful here
-    # we recommend extracting the components of the key from the tuple for efficiency purposes
     # return a list of integers
-    # Complete this part during the lab
-    return 0
+    n, e = key
+    cipher = [(ord(char) ** e) % n for char in plaintext]
+    return cipher
 
 def RSA_dec(ciphertext, key):
     # key should be a tuple (n, e)
-    # the chr() function will be useful here
-    # we recommend extracting the components of the key from the tuple for efficiency purposes
     # return a string
-    # Complete this part during the lab
-    return 0
+    n, e = key
+    plaintext = [chr((char ** e) % n) for char in ciphertext]
+    return ''.join(plaintext)
 
 def test():
     # do not modify!
     n       = calc_n(test_p, test_q)
     private = [n, test_d]
     public  = [n, test_e]
-    
+
     print("Public key:",public)
     print("Private key:",private)
-    
-    ciphertext = RSA_enc(message,public)
-    plaintext  = RSA_dec(ciphertext,private)
 
     print("Original message:",message)
+    ciphertext = RSA_enc(message,public)
     print("Encrypted message:",ciphertext)
+    plaintext  = RSA_dec(ciphertext,private)
     print("Decrypted message:",plaintext)
 
 # === Below this comment is the portions of this assignment that contribute to HW 2 ===
@@ -64,15 +67,20 @@ def test():
 def egcd(b, n):
     # runs the extended Euclidean algorithm on b and n
     # returns a triple (g, x, y) s.t. bx + ny = g = gcd(b, n)
-    # review the extended Euclidean algorithm on Wikipedia
-    # Complete for HW 2 extra credit
-    return 0
+    # https://en.wikibooks.org/wiki/Algorithm_Implementation
+    #   /Mathematics/Extended_Euclidean_algorithm
+    x0, x1, y0, y1 = 1, 0, 0, 1
+    while n != 0:
+        q, b, n = b // n, n, b % n
+        x0, x1 = x1, x0 - q * x1
+        y0, y1 = y1, y0 - q * y1
+    return  b, x0, y0
 
 def mulinv(e, n):
     # returns the multiplicative inverse of e in n
-    # make use of the egcd above
-    # Complete for HW 2 extra credit
-    return 0
+    g, x, _ = egcd(e, n)
+    if g == 1:
+        return x % n
 
 def checkprime(n, size):
     # do not modify!
@@ -119,25 +127,39 @@ def primegen(size):
         if q > lower:
             if checkprime(q, size): return q
             q -= 2
-        
+
 
 def keygen(size):
     # generate a random public/private key pair
     # size is the digits in the rsa modulus, approximately. must be even, >2
     # return a tuple of tuples, [[n, e], [n, d]]
-    # Complete this for HW 2 extra credit
     assert(size % 2 == 0 and size > 2) # keep this line!
-    return 0
+
+    p = primegen(size)
+    q = primegen(size)
+    while p == q: # make sure p != q
+        q = primegen(size)
+
+    n = calc_n(p, q)
+    phi = calc_phi(p, q)
+    e = random.randrange(1, phi)
+    d = mulinv(e, phi)
+
+    return ((n, e), (n, d))
 
 def customkeytest(text, size):
     keypair = keygen(size)
-    
+
     print("Public key:",keypair[0])
     print("Private key:",keypair[1])
-    
-    ciphertext = RSA_enc(text,keypair[0])
-    plaintext  = RSA_dec(ciphertext,keypair[1])
 
     print("Original message:",text)
+    ciphertext = RSA_enc(text,keypair[0])
     print("Encrypted message:",ciphertext)
+    plaintext  = RSA_dec(ciphertext,keypair[1])
     print("Decrypted message:",plaintext)
+
+if __name__ == "__main__":
+    test()
+    print "------------------------"
+    customkeytest(message, 4)

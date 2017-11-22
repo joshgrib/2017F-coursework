@@ -1,4 +1,4 @@
-package stevens.cs306.mac;
+//package stevens.cs306.mac;
 
 import java.security.Key;
 import javax.crypto.Cipher;
@@ -63,7 +63,7 @@ public abstract class MacSkeleton {
      * Encrypts a single block.  Input block must be of the correct block
      * size.
      * @param block     A single block of plaintext, of size BLOCK_SIZE
-     * @param key       The key to use for encrypting the plaintext 
+     * @param key       The key to use for encrypting the plaintext
      * @return          The ciphertext generated from encrypting the plaintext
      */
     public static byte[] encryptBlock(byte[] block, Key key) throws Exception {
@@ -81,4 +81,3 @@ public abstract class MacSkeleton {
     public abstract boolean verify(byte[] message, byte[] tag, Key key);
 
 }
-

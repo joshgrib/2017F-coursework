@@ -1,4 +1,4 @@
-package stevens.cs306.mac;
+//package stevens.cs306.mac;
 
 import java.security.Key;
 import javax.xml.bind.DatatypeConverter;
@@ -60,4 +60,3 @@ public class Main {
     }
 
 }
-
