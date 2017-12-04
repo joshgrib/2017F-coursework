@@ -5,8 +5,8 @@ public class EchoClient {
 	public static void main(String[] args) {
 		try {
 
-			int port = 5555;
-			Socket sock = new Socket("127.0.0.1", port);
+			int port = 30000;
+			Socket sock = new Socket("10.0.2.15", port);
 
 			BufferedReader instream = new BufferedReader(new InputStreamReader(sock.getInputStream()));
 			BufferedWriter outstream = new BufferedWriter(new OutputStreamWriter(sock.getOutputStream()));
@@ -21,9 +21,7 @@ public class EchoClient {
 			outstream.flush();
 
 			String response;
-
 			System.out.println("The server says: ");
-
 			// read data
 			response = instream.readLine();
 			System.out.println(response);

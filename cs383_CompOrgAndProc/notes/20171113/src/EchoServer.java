@@ -7,7 +7,7 @@ public class EchoServer {
 
 		try {
 
-			ServerSocket server = new ServerSocket(5555); // listen to port 8080
+			ServerSocket server = new ServerSocket(30000); // listen to port 8080
 
 			System.out.println("Waiting Incoming Connection...");
 			Socket sock = server.accept();
@@ -24,7 +24,8 @@ public class EchoServer {
 				// write your code
 
 			} else { // not following the protocol
-
+				outstream.write("Not Welcomed");
+				outstream.flush();
 				// write your code
 
 			}

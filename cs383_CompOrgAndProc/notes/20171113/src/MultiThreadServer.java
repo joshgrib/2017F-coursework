@@ -12,7 +12,7 @@ public class MultiThreadServer implements Runnable {
 	}
 
 	public static void main(String args[]) throws Exception {
-		ServerSocket ssock = new ServerSocket(8080);
+		ServerSocket ssock = new ServerSocket(30000);
 		System.out.println("Listening");
 		try {
 			while (true) {
@@ -33,20 +33,34 @@ public class MultiThreadServer implements Runnable {
 
 			// String strin = instream.readLine();
 			String strin;
+			boolean waiting = true;
+
 			while ((strin = instream.readLine()) != null) {
-				if (strin.equals("Hi")) {
-					outstream.write("Hi");
-
-				} else {
-
-					System.out.println(strin);
+				System.out.println(strin);
+				if(waiting){
+					// AWAIT
+					if(strin.equals("Hello")){
+						outstream.write("Welcome");
+						waiting = false;
+						outstream.flush();
+					}else{
+						outstream.write("Not Welcomed");
+						outstream.flush();
+					}
+				}else {
+					// ECHO
+					if(strin.equals("bye")){
+						outstream.write(strin);
+						waiting = true;
+						outstream.flush();
+						break;
+					}else{
+						outstream.write(strin);
+						outstream.flush();
+					}
 				}
-
-				if (strin.equals("Bye."))
-					break;
 			}
-
-			// csocket.close();
+			csocket.close();
 		} catch (IOException e) {
 			System.out.println(e);
 		}

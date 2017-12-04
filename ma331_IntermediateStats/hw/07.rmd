@@ -1,0 +1,69 @@
+---
+title: "MA 331 homework 7"
+author: "Josh Gribbon"
+date: "November 28, 2017"
+output: html_document
+fig_width: 4
+fig_height: 3
+geometry: margin=2cm
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Data
+```{r, echo=FALSE}
+schools = c("Arizona","Buffalo","Cal-Berkeley","Cal-Davis","Cal-Irvine","Cal-San Diego","Colorado","Florida","Georgia Tech","Illinois","Indiana","Iowa","Iowa State","Kansas","Maryland","Michigan","Michigan State","Minnesota","Missouri","Nebraska","North Carolina","Ohio State","Oregon","Penn State","Pittsburgh","Purdue","Rutgers","Texas","Texas A&M","UCLA","Virginia","Washington","Wisconsin")
+In08 = c(5542,6285,7656,8635,8046,8062,7278,3778,6040,12106,8231,6544,6360,7042,8005,11738,10214,10756,8467,6584,5397,8679,6435,13706,13642,7750,11540,8532,7844,7551,9300,6802,7564)
+In11 = c(9286,7482,12834,13860,13122,13200,9152,5657,9652,13838,9524,7765,7486,9222,8655,12634,12202,13022,8989,7563,7009,9735,8789,15984,16132,9478,12754,9794,8421,12686,11786,10574,9665)
+Out08 = c(18676,12545,28264,29243,28654,28673,26756,20623,25182,25890,24769,20658,17350,17119,23075,33069,25672,14756,19588,17204,22295,21918,19992,24940,23290,23224,21488,27760,22184,27572,29600,23219,21814)
+Out11 = c(25496,16932,35712,36738,36000,36078,30330,27934,27862,27980,29540,25099,19358,22608,26026,37782,31148,18022,21784,19848,26834,24630,27653,28066,25540,27646,25416,32506,23811,35564,36780,28058,25415)
+```
+```{r}
+tuition.data = data.frame(schools, In08, In11, Out08, Out11, row.names=1)
+```
+
+## 10.16
+### a)
+```{r, echo=FALSE}
+plot(In08, In11, main="2008 In-State Tuition VS 2011 In-State Tuition")
+```
+
+Fairly strong positive, likel linear relationship. No big outliers or unusual values. A linear relationship does seem reasonable.
+
+### b)
+```{r}
+tuition.model = lm(In08~In11, data=tuition.data)
+summary(tuition.model)
+```
+y = 0.73051x + 543.33834
+
+### c)
+```{r}
+tuition.res = resid(tuition.model)
+plot(In08, tuition.res, abline(0,0), xlab="2008 In-State Tuition", ylab="Residuals")
+```
+
+The residuals seem to be positively correlated with the tuition cost, meaning the model get's less accurate at the extremities of the data.
+---
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
