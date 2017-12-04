@@ -64,4 +64,6 @@ RET
 /*
  * Useful links:
  *  - https://arduino.stackexchange.com/questions/23146/make-led-blink-using-avr-assembly/23160
+ *  - https://stackoverflow.com/questions/39361410/creating-a-toggle-switch-in-avr-assembly
+ *  - https://www.arduino.cc/en/Reference/PortManipulation
  */
