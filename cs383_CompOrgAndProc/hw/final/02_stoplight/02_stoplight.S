@@ -1,7 +1,36 @@
 #define __SFR_OFFSET 0
 
 #include "avr/io.h"
-#include <avr/portpins.h>
+//#include <avr/portpins.h>
+
+
+.text
+.global setup
+.global loop
+.global one
+.global two
+
+setup:
+  ldi r16, 0b11111111
+  sts DDRB, r16
+  ldi r17, 0b00000000
+  sts DDRD, r16
+  
+loop:
+one:    
+  lds r20, PORTD
+  cpi r20, 0x00
+  breq two
+  sts   PORTB, r17
+  jmp  one
+two:     
+  sts   PORTB,r16
+  jmp  one
+
+
+
+
+
 
 /*
 // This mostly works with a button connected to pin 0 and ground, and a light to pin 8 and ground
@@ -27,7 +56,7 @@ dec_jmp:
   rjmp loop
 */
 
-
+/*
 //This works to blink pin 13 on and off
 .global setup
 .global loop
@@ -58,7 +87,7 @@ Delay3:
     DEC     r18          
     BRNE    Delay1         
 RET
-
+*/
 
 
 /*
