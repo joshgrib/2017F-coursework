@@ -28,6 +28,9 @@ two:
   jmp  one
 
 
+/* RANDOM NUMBER
+ *  Have a loop going and when the button is clicked use that value as the random number
+ */
 
 
 
