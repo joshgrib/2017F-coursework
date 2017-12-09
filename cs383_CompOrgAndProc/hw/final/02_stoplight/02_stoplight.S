@@ -1,101 +1,64 @@
 #define __SFR_OFFSET 0
-
 #include "avr/io.h"
-//#include <avr/portpins.h>
 
-
-.text
-.global setup
-.global loop
-.global one
-.global two
-
-setup:
-  ldi r16, 0b11111111
-  sts DDRB, r16
-  ldi r17, 0b00000000
-  sts DDRD, r16
-  
-loop:
-one:    
-  lds r20, PORTD
-  cpi r20, 0x00
-  breq two
-  sts   PORTB, r17
-  jmp  one
-two:     
-  sts   PORTB,r16
-  jmp  one
-
-
-/* RANDOM NUMBER
- *  Have a loop going and when the button is clicked use that value as the random number
- */
-
-
-
-
-/*
-// This mostly works with a button connected to pin 0 and ground, and a light to pin 8 and ground
 .global setup
 .global loop
 
-setup:
-  clr r16
-  
-loop:
-  in r17, PIND          // get state of pins on Port D
-  andi r17, (1<<PD0)    // you should mask to get only what you want
-  cpi r17, 0            // compare result to 0 (pushbutton is pressed)
-  brne loop            // if != 0, go check again
-  cpi r16, 0             // compare del to 0
-  brne dec_jmp           // if != 0, ignore this run
-  ldi r17, (1<<PB0)     // otherwise, write logic 1 to pin 0 of Port B
-  out PINB, r17         // which toggles the state of the pin
-  ldi r16, 250           // next one will be ignored for 250 runs
-
-dec_jmp:
-  dec r16                // decrement del
-  rjmp loop
-*/
-
-/*
-//This works to blink pin 13 on and off
-.global setup
-.global loop
+//set up some register aliases
+#define red     r16
+#define yellow  r17
+#define green   r18
+#define all_off r19
+#define all_on  r20
+#define l1_i    r21
+#define l2_i    r22
+#define l3_i    r23
+#define time_s  r24
 
 setup:
-    //set pin 13 as output
-    ldi r16, 0b00100000
-    out DDRB, r16
+
+    ldi red,    0b10000000   //red light pin 7
+    ldi yellow, 0b01000000   //yellow light pin 6
+    ldi green,  0b00100000   //green light pin 5
+    ldi all_off,0b00000000
+    ldi all_on, 0b11111111
+    out DDRD, all_on
 
 loop:
-    //toggle the light
-    out PINB, r16
-    call Delay_small
+    //turn on red light
+    out PORTD, red    //red light on
+    ldi time_s, 10    //set for 10 second delay
+    call Delay_time   //run the delay
+
+    out PORTD, green  //turn yellow on
+    ldi time_s, 7
+    call Delay_time
+
+    out PORTD, yellow //turn yellow on
+    ldi time_s, 2
+    call Delay_time
+
     rjmp loop
 
-Delay_small:              
-    LDI     r18,   64  
-Delay1:
-    LDI     r19,   125   
-Delay2:
-    LDI     r20,   250   
-Delay3:
-    DEC     r20         
-    NOP                
-    BRNE    Delay3    
-    DEC     r19         
-    BRNE    Delay2      
-    DEC     r18          
-    BRNE    Delay1         
+Delay_time:
+LI:
+    call Delay_1s       //delay 1 second
+    dec time_s
+    brne LI
+    out PORTD, all_off  //turn off lights
+    ret
+
+Delay_1s:
+    LDI     l1_i,   105
+L1: LDI     l2_i,   125
+L2: LDI     l3_i,   250
+L3:
+    NOP
+    NOP
+    DEC     l3_i
+    BRNE    L3
+    DEC     l2_i
+    BRNE    L2
+    DEC     l1_i
+    BRNE    L1
 RET
-*/
-
-
-/*
- * Useful links:
- *  - https://arduino.stackexchange.com/questions/23146/make-led-blink-using-avr-assembly/23160
- *  - https://stackoverflow.com/questions/39361410/creating-a-toggle-switch-in-avr-assembly
- *  - https://www.arduino.cc/en/Reference/PortManipulation
- */

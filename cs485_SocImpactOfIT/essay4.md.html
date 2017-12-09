@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8" />
+      <title>essay4</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    jax: ["input/TeX","output/HTML-CSS"],
+    extensions: [],
+    TeX: {
+      extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]
+    },
+    showMathMenu: false
+  });
+</script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js">
+</script>
+      <style>.markdown-preview:not([data-use-github-style]) { padding: 2em; font-size: 1.2em; color: rgb(245, 245, 245); overflow: auto; background-color: rgb(38, 50, 56); }
+.markdown-preview:not([data-use-github-style]) > :first-child { margin-top: 0px; }
+.markdown-preview:not([data-use-github-style]) h1, .markdown-preview:not([data-use-github-style]) h2, .markdown-preview:not([data-use-github-style]) h3, .markdown-preview:not([data-use-github-style]) h4, .markdown-preview:not([data-use-github-style]) h5, .markdown-preview:not([data-use-github-style]) h6 { line-height: 1.2; margin-top: 1.5em; margin-bottom: 0.5em; color: rgb(255, 255, 255); }
+.markdown-preview:not([data-use-github-style]) h1 { font-size: 2.4em; font-weight: 300; }
+.markdown-preview:not([data-use-github-style]) h2 { font-size: 1.8em; font-weight: 400; }
+.markdown-preview:not([data-use-github-style]) h3 { font-size: 1.5em; font-weight: 500; }
+.markdown-preview:not([data-use-github-style]) h4 { font-size: 1.2em; font-weight: 600; }
+.markdown-preview:not([data-use-github-style]) h5 { font-size: 1.1em; font-weight: 600; }
+.markdown-preview:not([data-use-github-style]) h6 { font-size: 1em; font-weight: 600; }
+.markdown-preview:not([data-use-github-style]) strong { color: rgb(255, 255, 255); }
+.markdown-preview:not([data-use-github-style]) del { color: rgb(204, 204, 204); }
+.markdown-preview:not([data-use-github-style]) a, .markdown-preview:not([data-use-github-style]) a code { color: rgb(245, 245, 245); }
+.markdown-preview:not([data-use-github-style]) img { max-width: 100%; }
+.markdown-preview:not([data-use-github-style]) > p { margin-top: 0px; margin-bottom: 1.5em; }
+.markdown-preview:not([data-use-github-style]) > ul, .markdown-preview:not([data-use-github-style]) > ol { margin-bottom: 1.5em; }
+.markdown-preview:not([data-use-github-style]) blockquote { margin: 1.5em 0px; font-size: inherit; color: rgb(204, 204, 204); border-color: rgb(71, 93, 105); border-width: 4px; }
+.markdown-preview:not([data-use-github-style]) hr { margin: 3em 0px; border-top: 2px dashed rgb(71, 93, 105); background: none; }
+.markdown-preview:not([data-use-github-style]) table { margin: 1.5em 0px; }
+.markdown-preview:not([data-use-github-style]) th { color: rgb(255, 255, 255); }
+.markdown-preview:not([data-use-github-style]) th, .markdown-preview:not([data-use-github-style]) td { padding: 0.66em 1em; border: 1px solid rgb(71, 93, 105); }
+.markdown-preview:not([data-use-github-style]) pre, .markdown-preview:not([data-use-github-style]) code { color: rgb(255, 255, 255); background-color: rgb(54, 72, 80); }
+.markdown-preview:not([data-use-github-style]) pre, .markdown-preview:not([data-use-github-style]) pre.editor-colors { margin: 1.5em 0px; padding: 1em; font-size: 0.92em; border-radius: 3px; background-color: rgb(46, 61, 68); }
+.markdown-preview:not([data-use-github-style]) kbd { color: rgb(255, 255, 255); border-width: 1px 1px 2px; border-style: solid; border-color: rgb(71, 93, 105) rgb(71, 93, 105) rgb(59, 77, 86); background-color: rgb(54, 72, 80); }
+.markdown-preview[data-use-github-style] { font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif; line-height: 1.6; word-wrap: break-word; padding: 30px; font-size: 16px; color: rgb(51, 51, 51); overflow: scroll; background-color: rgb(255, 255, 255); }
+.markdown-preview[data-use-github-style] > :first-child { margin-top: 0px !important; }
+.markdown-preview[data-use-github-style] > :last-child { margin-bottom: 0px !important; }
+.markdown-preview[data-use-github-style] a:not([href]) { color: inherit; text-decoration: none; }
+.markdown-preview[data-use-github-style] .absent { color: rgb(204, 0, 0); }
+.markdown-preview[data-use-github-style] .anchor { position: absolute; top: 0px; left: 0px; display: block; padding-right: 6px; padding-left: 30px; margin-left: -30px; }
+.markdown-preview[data-use-github-style] .anchor:focus { outline: none; }
+.markdown-preview[data-use-github-style] h1, .markdown-preview[data-use-github-style] h2, .markdown-preview[data-use-github-style] h3, .markdown-preview[data-use-github-style] h4, .markdown-preview[data-use-github-style] h5, .markdown-preview[data-use-github-style] h6 { position: relative; margin-top: 1em; margin-bottom: 16px; font-weight: bold; line-height: 1.4; }
+.markdown-preview[data-use-github-style] h1 .octicon-link, .markdown-preview[data-use-github-style] h2 .octicon-link, .markdown-preview[data-use-github-style] h3 .octicon-link, .markdown-preview[data-use-github-style] h4 .octicon-link, .markdown-preview[data-use-github-style] h5 .octicon-link, .markdown-preview[data-use-github-style] h6 .octicon-link { display: none; color: rgb(0, 0, 0); vertical-align: middle; }
+.markdown-preview[data-use-github-style] h1:hover .anchor, .markdown-preview[data-use-github-style] h2:hover .anchor, .markdown-preview[data-use-github-style] h3:hover .anchor, .markdown-preview[data-use-github-style] h4:hover .anchor, .markdown-preview[data-use-github-style] h5:hover .anchor, .markdown-preview[data-use-github-style] h6:hover .anchor { padding-left: 8px; margin-left: -30px; text-decoration: none; }
+.markdown-preview[data-use-github-style] h1:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h2:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h3:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h4:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h5:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h6:hover .anchor .octicon-link { display: inline-block; }
+.markdown-preview[data-use-github-style] h1 tt, .markdown-preview[data-use-github-style] h2 tt, .markdown-preview[data-use-github-style] h3 tt, .markdown-preview[data-use-github-style] h4 tt, .markdown-preview[data-use-github-style] h5 tt, .markdown-preview[data-use-github-style] h6 tt, .markdown-preview[data-use-github-style] h1 code, .markdown-preview[data-use-github-style] h2 code, .markdown-preview[data-use-github-style] h3 code, .markdown-preview[data-use-github-style] h4 code, .markdown-preview[data-use-github-style] h5 code, .markdown-preview[data-use-github-style] h6 code { font-size: inherit; }
+.markdown-preview[data-use-github-style] h1 { padding-bottom: 0.3em; font-size: 2.25em; line-height: 1.2; border-bottom: 1px solid rgb(238, 238, 238); }
+.markdown-preview[data-use-github-style] h1 .anchor { line-height: 1; }
+.markdown-preview[data-use-github-style] h2 { padding-bottom: 0.3em; font-size: 1.75em; line-height: 1.225; border-bottom: 1px solid rgb(238, 238, 238); }
+.markdown-preview[data-use-github-style] h2 .anchor { line-height: 1; }
+.markdown-preview[data-use-github-style] h3 { font-size: 1.5em; line-height: 1.43; }
+.markdown-preview[data-use-github-style] h3 .anchor { line-height: 1.2; }
+.markdown-preview[data-use-github-style] h4 { font-size: 1.25em; }
+.markdown-preview[data-use-github-style] h4 .anchor { line-height: 1.2; }
+.markdown-preview[data-use-github-style] h5 { font-size: 1em; }
+.markdown-preview[data-use-github-style] h5 .anchor { line-height: 1.1; }
+.markdown-preview[data-use-github-style] h6 { font-size: 1em; color: rgb(119, 119, 119); }
+.markdown-preview[data-use-github-style] h6 .anchor { line-height: 1.1; }
+.markdown-preview[data-use-github-style] p, .markdown-preview[data-use-github-style] blockquote, .markdown-preview[data-use-github-style] ul, .markdown-preview[data-use-github-style] ol, .markdown-preview[data-use-github-style] dl, .markdown-preview[data-use-github-style] table, .markdown-preview[data-use-github-style] pre { margin-top: 0px; margin-bottom: 16px; }
+.markdown-preview[data-use-github-style] hr { height: 4px; padding: 0px; margin: 16px 0px; border: 0px none; background-color: rgb(231, 231, 231); }
+.markdown-preview[data-use-github-style] ul, .markdown-preview[data-use-github-style] ol { padding-left: 2em; }
+.markdown-preview[data-use-github-style] ul.no-list, .markdown-preview[data-use-github-style] ol.no-list { padding: 0px; list-style-type: none; }
+.markdown-preview[data-use-github-style] ul ul, .markdown-preview[data-use-github-style] ul ol, .markdown-preview[data-use-github-style] ol ol, .markdown-preview[data-use-github-style] ol ul { margin-top: 0px; margin-bottom: 0px; }
+.markdown-preview[data-use-github-style] li > p { margin-top: 16px; }
+.markdown-preview[data-use-github-style] dl { padding: 0px; }
+.markdown-preview[data-use-github-style] dl dt { padding: 0px; margin-top: 16px; font-size: 1em; font-style: italic; font-weight: bold; }
+.markdown-preview[data-use-github-style] dl dd { padding: 0px 16px; margin-bottom: 16px; }
+.markdown-preview[data-use-github-style] blockquote { padding: 0px 15px; color: rgb(119, 119, 119); border-left: 4px solid rgb(221, 221, 221); }
+.markdown-preview[data-use-github-style] blockquote > :first-child { margin-top: 0px; }
+.markdown-preview[data-use-github-style] blockquote > :last-child { margin-bottom: 0px; }
+.markdown-preview[data-use-github-style] table { display: block; width: 100%; overflow: auto; word-break: keep-all; }
+.markdown-preview[data-use-github-style] table th { font-weight: bold; }
+.markdown-preview[data-use-github-style] table th, .markdown-preview[data-use-github-style] table td { padding: 6px 13px; border: 1px solid rgb(221, 221, 221); }
+.markdown-preview[data-use-github-style] table tr { border-top: 1px solid rgb(204, 204, 204); background-color: rgb(255, 255, 255); }
+.markdown-preview[data-use-github-style] table tr:nth-child(2n) { background-color: rgb(248, 248, 248); }
+.markdown-preview[data-use-github-style] img { max-width: 100%; box-sizing: border-box; }
+.markdown-preview[data-use-github-style] .emoji { max-width: none; }
+.markdown-preview[data-use-github-style] span.frame { display: block; overflow: hidden; }
+.markdown-preview[data-use-github-style] span.frame > span { display: block; float: left; width: auto; padding: 7px; margin: 13px 0px 0px; overflow: hidden; border: 1px solid rgb(221, 221, 221); }
+.markdown-preview[data-use-github-style] span.frame span img { display: block; float: left; }
+.markdown-preview[data-use-github-style] span.frame span span { display: block; padding: 5px 0px 0px; clear: both; color: rgb(51, 51, 51); }
+.markdown-preview[data-use-github-style] span.align-center { display: block; overflow: hidden; clear: both; }
+.markdown-preview[data-use-github-style] span.align-center > span { display: block; margin: 13px auto 0px; overflow: hidden; text-align: center; }
+.markdown-preview[data-use-github-style] span.align-center span img { margin: 0px auto; text-align: center; }
+.markdown-preview[data-use-github-style] span.align-right { display: block; overflow: hidden; clear: both; }
+.markdown-preview[data-use-github-style] span.align-right > span { display: block; margin: 13px 0px 0px; overflow: hidden; text-align: right; }
+.markdown-preview[data-use-github-style] span.align-right span img { margin: 0px; text-align: right; }
+.markdown-preview[data-use-github-style] span.float-left { display: block; float: left; margin-right: 13px; overflow: hidden; }
+.markdown-preview[data-use-github-style] span.float-left span { margin: 13px 0px 0px; }
+.markdown-preview[data-use-github-style] span.float-right { display: block; float: right; margin-left: 13px; overflow: hidden; }
+.markdown-preview[data-use-github-style] span.float-right > span { display: block; margin: 13px auto 0px; overflow: hidden; text-align: right; }
+.markdown-preview[data-use-github-style] code, .markdown-preview[data-use-github-style] tt { padding: 0.2em 0px; margin: 0px; font-size: 85%; border-radius: 3px; background-color: rgba(0, 0, 0, 0.0392157); }
+.markdown-preview[data-use-github-style] code::before, .markdown-preview[data-use-github-style] tt::before, .markdown-preview[data-use-github-style] code::after, .markdown-preview[data-use-github-style] tt::after { letter-spacing: -0.2em; content: " "; }
+.markdown-preview[data-use-github-style] code br, .markdown-preview[data-use-github-style] tt br { display: none; }
+.markdown-preview[data-use-github-style] del code { text-decoration: inherit; }
+.markdown-preview[data-use-github-style] pre > code { padding: 0px; margin: 0px; font-size: 100%; word-break: normal; white-space: pre; border: 0px; background: transparent; }
+.markdown-preview[data-use-github-style] .highlight { margin-bottom: 16px; }
+.markdown-preview[data-use-github-style] .highlight pre, .markdown-preview[data-use-github-style] pre { padding: 16px; overflow: auto; font-size: 85%; line-height: 1.45; border-radius: 3px; background-color: rgb(247, 247, 247); }
+.markdown-preview[data-use-github-style] .highlight pre { margin-bottom: 0px; word-break: normal; }
+.markdown-preview[data-use-github-style] pre { word-wrap: normal; }
+.markdown-preview[data-use-github-style] pre code, .markdown-preview[data-use-github-style] pre tt { display: inline; max-width: initial; padding: 0px; margin: 0px; overflow: initial; line-height: inherit; word-wrap: normal; border: 0px; background-color: transparent; }
+.markdown-preview[data-use-github-style] pre code::before, .markdown-preview[data-use-github-style] pre tt::before, .markdown-preview[data-use-github-style] pre code::after, .markdown-preview[data-use-github-style] pre tt::after { content: normal; }
+.markdown-preview[data-use-github-style] kbd { display: inline-block; padding: 3px 5px; font-size: 11px; line-height: 10px; color: rgb(85, 85, 85); vertical-align: middle; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(204, 204, 204) rgb(187, 187, 187); border-radius: 3px; box-shadow: rgb(187, 187, 187) 0px -1px 0px inset; background-color: rgb(252, 252, 252); }
+.markdown-preview[data-use-github-style] a { color: rgb(51, 122, 183); }
+.markdown-preview[data-use-github-style] pre, .markdown-preview[data-use-github-style] code { color: inherit; }
+.markdown-preview[data-use-github-style] pre, .markdown-preview[data-use-github-style] pre.editor-colors { padding: 0.8em 1em; margin-bottom: 1em; font-size: 0.85em; border-radius: 4px; overflow: auto; }
+.scrollbars-visible-always .markdown-preview pre.editor-colors .vertical-scrollbar, .scrollbars-visible-always .markdown-preview pre.editor-colors .horizontal-scrollbar { visibility: hidden; }
+.scrollbars-visible-always .markdown-preview pre.editor-colors:hover .vertical-scrollbar, .scrollbars-visible-always .markdown-preview pre.editor-colors:hover .horizontal-scrollbar { visibility: visible; }
+.markdown-preview del { text-decoration: none; position: relative; }
+.markdown-preview del::after { border-bottom: 1px solid black; content: ""; left: 0px; position: absolute; right: 0px; top: 50%; }
+.markdown-preview .flash { animation: flash 1s ease-out 1; outline: rgba(255, 0, 0, 0) solid 1px; }
+.markdown-preview .flash:not(li) { display: block; }
+.markdown-preview { color: rgb(245, 245, 245); padding: 80px !important; background-color: rgb(38, 50, 56); }
+.markdown-preview h2, .markdown-preview h3, .markdown-preview h4, .markdown-preview h5, .markdown-preview h6 { color: rgb(142, 148, 151) !important; }
+.markdown-preview h1 { text-align: center; color: rgb(224, 226, 226) !important; }
+.markdown-preview a { border-bottom: 2px solid rgb(29, 98, 164); }
+.markdown-preview a:hover { text-decoration: none; border-bottom: 2px solid rgb(25, 118, 210); background-color: rgba(29, 98, 164, 0.2); }
+.markdown-preview { background: darkgrey; }
+.markdown-preview { color: rgb(245, 245, 245); padding: 80px !important; background-color: rgb(38, 50, 56); }
+.markdown-preview h2, .markdown-preview h3, .markdown-preview h4, .markdown-preview h5, .markdown-preview h6 { color: rgb(142, 148, 151) !important; }
+.markdown-preview h1 { text-align: center; color: rgb(224, 226, 226) !important; }
+.markdown-preview a { border-bottom: 2px solid rgb(29, 98, 164); }
+.markdown-preview a:hover { text-decoration: none; border-bottom: 2px solid rgb(25, 118, 210); background-color: rgba(29, 98, 164, 0.2); }
+.bracket-matcher .region {
+  border-bottom: 1px dotted lime;
+  position: absolute;
+}
+
+.spell-check-misspelling .region {
+  border-bottom: 2px dotted rgba(255, 51, 51, 0.75);
+}
+.spell-check-corrections {
+  width: 25em !important;
+}
+
+pre.editor-colors {
+  background-color: #263238;
+  color: #f5f5f5;
+}
+pre.editor-colors .wrap-guide {
+  background-color: #3b464b;
+}
+pre.editor-colors .indent-guide {
+  color: #3b464b;
+}
+pre.editor-colors .invisible-character {
+  color: #3b464b;
+}
+pre.editor-colors .gutter .line-number.cursor-line {
+  color: #b7bbbc;
+}
+pre.editor-colors .gutter .line-number.cursor-line-no-selection {
+  color: #b7bbbc;
+}
+pre.editor-colors .gutter-container {
+  color: #646d71;
+}
+pre.editor-colors .gutter .line-number.folded,
+pre.editor-colors .gutter .line-number:after,
+pre.editor-colors .fold-marker:after {
+  color: #646d71;
+}
+pre.editor-colors .invisible {
+  color: #f5f5f5;
+}
+pre.editor-colors .cursor {
+  color: #f5f5f5;
+  z-index: 30001 !important;
+}
+pre.editor-colors .selection .region {
+  background-color: rgba(224, 225, 226, 0.1);
+}
+pre.editor-colors .find-result .region {
+  background-color: rgba(29, 98, 164, 0.15);
+  border: 1px solid rgba(29, 98, 164, 0.6);
+}
+pre.editor-colors .highlight.current-result .region,
+pre.editor-colors .highlight.current-result ~ .highlight.selection .region {
+  background-color: rgba(25, 118, 210, 0.15);
+}
+pre.editor-colors[mini] .scroll-view,
+pre.editor-colors .scroll-view .host([mini]) .scroll-view {
+  padding-left: 1px;
+}
+.syntax--link {
+  color: #8e9497 !important;
+}
+.syntax--http,
+.syntax--hyperlink,
+.syntax--uri {
+  border-bottom: 1px dotted #b7bbbc;
+}
+.syntax--brace {
+  color: #646d71 !important;
+}
+.syntax--brace .syntax--curly,
+.syntax--brace .syntax--square {
+  color: #646d71 !important;
+}
+.syntax--cursor-line {
+  z-index: -100 !important;
+}
+.syntax--line-number {
+  opacity: 0.9;
+}
+.ooe-highlighted {
+  background: rgba(245, 124, 0, 0.07) !important;
+  color: #F57C00 !important;
+}
+.ooe-added {
+  color: #388E3C !important;
+  background-color: rgba(56, 142, 60, 0.07);
+}
+.ooe-removed {
+  color: #E64A19 !important;
+  background-color: rgba(230, 74, 25, 0.07);
+}
+.ooe-renamed {
+  color: #7B1FA2 !important;
+  background-color: rgba(123, 31, 162, 0.07);
+}
+.ooe-changed {
+  color: #1976D2 !important;
+  background-color: rgba(25, 118, 210, 0.07);
+}
+.syntax--punctuation {
+  color: #646d71;
+}
+.syntax--comment {
+  color: #b7bbbc;
+}
+.syntax--comment.syntax--punctuation {
+  color: #646d71;
+}
+.syntax--meta {
+  color: #e0e2e2;
+}
+.syntax--none {
+  color: #8e9497;
+}
+.syntax--string {
+  color: #388E3C;
+}
+.syntax--entity {
+  color: #622582;
+}
+.syntax--entity.syntax--function {
+  color: #7B1FA2 !important;
+}
+.syntax--support {
+  color: #1976D2;
+}
+.syntax--support.syntax--function {
+  color: #1976D2;
+}
+.syntax--support.syntax--macro {
+  color: #33723b;
+}
+.syntax--support.syntax--type {
+  color: #b76611;
+}
+.syntax--support.syntax--type.syntax--property-name {
+  color: #1976D2;
+}
+.syntax--variable {
+  color: #1d62a4;
+}
+.syntax--variable.syntax--interpolation {
+  font-weight: bold;
+}
+.syntax--keyword {
+  color: #1976D2;
+}
+.syntax--keyword.syntax--operator {
+  color: #8e9497;
+}
+.syntax--keyword.syntax--unit {
+  color: #1d62a4;
+}
+.syntax--constant {
+  color: #E64A19;
+}
+.syntax--constant.syntax--numeric {
+  color: #F57C00;
+}
+.syntax--storage {
+  color: #ac4322;
+}
+.syntax--source.syntax--gfm {
+  -webkit-font-smoothing: auto;
+}
+.syntax--source.syntax--gfm .syntax--markup.syntax--italic {
+  font-style: italic;
+  color: #f5f5f5;
+}
+.syntax--source.syntax--gfm .syntax--markup.syntax--bold {
+  font-weight: bold;
+  color: #f5f5f5;
+}
+.syntax--source.syntax--gfm .syntax--markup.syntax--heading {
+  color: #e0e2e2;
+  font-weight: bold;
+}
+.syntax--source.syntax--gfm .syntax--markup.syntax--heading.syntax--space,
+.syntax--source.syntax--gfm .syntax--markup.syntax--heading.syntax--marker {
+  font-weight: normal;
+}
+.syntax--source.syntax--gfm .syntax--markup.syntax--heading.syntax--marker {
+  color: #388E3C;
+}
+.syntax--source.syntax--gfm .syntax--hr {
+  font-weight: bold;
+  color: #646d71;
+}
+.syntax--source.syntax--gfm .syntax--list {
+  color: #33723b;
+}
+.syntax--source.syntax--gfm .syntax--quote {
+  color: #b7bbbc;
+}
+.syntax--source.syntax--gfm .syntax--quote.syntax--support {
+  font-weight: bold;
+  color: #33723b;
+}
+.syntax--source.syntax--gfm .syntax--mention {
+  color: #8e9497;
+}
+.syntax--source.syntax--gfm .syntax--username {
+  color: #388E3C;
+}
+.syntax--source.syntax--gfm .syntax--raw {
+  color: #E64A19;
+}
+.syntax--source.syntax--gfm .syntax--link .syntax--entity {
+  color: #388E3C;
+}
+.syntax--source.syntax--gfm .syntax--link .syntax--underline {
+  text-decoration: none;
+  border-bottom: 1px dotted #b7bbbc;
+}
+.syntax--source.syntax--gfm .syntax--link .syntax--punctuation {
+  color: #8e9497;
+  text-decoration: none !important;
+}
+.syntax--source.syntax--gfm .syntax--table.syntax--gfm .syntax--border {
+  color: #8e9497;
+  font-weight: bold;
+}
+.syntax--source.syntax--gfm .syntax--table.syntax--gfm .syntax--border.syntax--outer {
+  color: #b7bbbc;
+}
+.syntax--source.syntax--gfm .syntax--table.syntax--gfm .syntax--border.syntax--header {
+  color: #3b464b;
+}
+.syntax--source.syntax--gfm .syntax--table.syntax--gfm .syntax--alignment {
+  color: #646d71;
+}
+.syntax--critic.syntax--gfm.syntax--addition {
+  color: #388E3C;
+}
+.syntax--critic.syntax--gfm.syntax--deletion {
+  color: #E64A19;
+}
+.syntax--critic.syntax--gfm.syntax--substitution {
+  color: #7B1FA2;
+}
+.syntax--critic.syntax--gfm.syntax--comment {
+  color: #1976D2;
+}
+.syntax--critic.syntax--gfm.syntax--highlight {
+  color: #F57C00;
+}
+.syntax--critic.syntax--gfm.syntax--marker {
+  color: #646d71 !important;
+}
+.syntax--critic.syntax--gfm.syntax--operator {
+  color: #646d71 !important;
+}
+.syntax--md .syntax--reference.syntax--variable {
+  color: #388E3C;
+}
+.syntax--md .syntax--reference.syntax--variable .syntax--punctuation {
+  color: #b76611;
+}
+.syntax--md .syntax--hr {
+  color: #E64A19;
+  font-weight: bold;
+}
+.syntax--md .syntax--heading {
+  color: #e0e2e2;
+  font-weight: bold;
+}
+.syntax--md .syntax--heading .syntax--punctuation {
+  font-weight: normal !important;
+  color: #1976D2 !important;
+}
+.syntax--md .syntax--list .syntax--punctuation {
+  color: #1d62a4 !important;
+}
+.syntax--md .syntax--quote {
+  color: #b7bbbc;
+}
+.syntax--md .syntax--quote .syntax--punctuation {
+  color: #b76611 !important;
+}
+.syntax--md .syntax--table {
+  color: #e0e2e2 !important;
+}
+.syntax--md .syntax--table .syntax--alignment,
+.syntax--md .syntax--table .syntax--storage,
+.syntax--md .syntax--table .syntax--punctuation {
+  color: #8e9497 !important;
+  font-weight: normal;
+}
+.syntax--md .syntax--emphasis {
+  color: #f5f5f5;
+}
+.syntax--md .syntax--emphasis.syntax--italic {
+  font-style: italic;
+}
+.syntax--md .syntax--emphasis.syntax--bold {
+  font-weight: bold;
+}
+.syntax--md .syntax--fenced {
+  color: #e0e2e2;
+}
+.syntax--md .syntax--fenced .syntax--language {
+  color: #33723b;
+  font-style: italic;
+}
+.syntax--md .syntax--raw {
+  color: #388E3C;
+}
+.syntax--md .syntax--label.syntax--link.syntax--string {
+  color: #b76611 !important;
+}
+.syntax--md .syntax--text.syntax--link.syntax--string {
+  color: #388E3C !important;
+}
+.syntax--md .syntax--image.syntax--link.syntax--string {
+  color: #388E3C !important;
+}
+.syntax--md .syntax--image .syntax--punctuation::first-letter {
+  color: #1976D2 !important;
+}
+.syntax--md .syntax--critic.syntax--highlight {
+  background: rgba(245, 124, 0, 0.07) !important;
+  color: #F57C00 !important;
+}
+.syntax--md .syntax--critic.syntax--inserted {
+  color: #388E3C !important;
+  background-color: rgba(56, 142, 60, 0.07);
+}
+.syntax--md .syntax--critic.syntax--deleted {
+  color: #E64A19 !important;
+  background-color: rgba(230, 74, 25, 0.07);
+}
+.syntax--md .syntax--critic.syntax--comment {
+  color: #7B1FA2 !important;
+  background-color: rgba(123, 31, 162, 0.07);
+}
+.syntax--md .syntax--critic.syntax--substitution {
+  color: #1976D2 !important;
+  background-color: rgba(25, 118, 210, 0.07);
+}
+.markdown-preview {
+  padding: 0px auto;
+  padding: 80px !important;
+  background-color: #263238;
+  color: #f5f5f5;
+}
+.markdown-preview h2,
+.markdown-preview h3,
+.markdown-preview h4,
+.markdown-preview h5,
+.markdown-preview h6 {
+  color: #8e9497 !important;
+}
+.markdown-preview h1 {
+  text-align: center;
+  color: #e0e2e2 !important;
+}
+.markdown-preview a {
+  border-bottom: 2px solid #1d62a4;
+}
+.markdown-preview a:hover {
+  text-decoration: none;
+  border-bottom: 2px solid #1976D2;
+  background-color: rgba(29, 98, 164, 0.2);
+}
+.syntax--source .syntax--meta.syntax--diff.syntax--header.syntax--from-file {
+  color: #1976D2 !important;
+  background-color: rgba(25, 118, 210, 0.07);
+}
+.syntax--source .syntax--meta.syntax--diff.syntax--header.syntax--to-file {
+  color: #7B1FA2 !important;
+  background-color: rgba(123, 31, 162, 0.07);
+}
+.syntax--source .syntax--meta.syntax--diff.syntax--range {
+  color: #3b464b !important;
+}
+.syntax--source .syntax--meta.syntax--diff.syntax--line-number {
+  color: #e0e2e2 !important;
+  font-weight: bold;
+}
+.syntax--source .syntax--diff.syntax--deleted {
+  color: #E64A19 !important;
+  background-color: rgba(230, 74, 25, 0.07);
+}
+.syntax--source .syntax--diff.syntax--inserted {
+  color: #388E3C !important;
+  background-color: rgba(56, 142, 60, 0.07);
+}
+.gutter .git-line-removed {
+  z-index: 90000;
+}
+.gutter .git-line-removed::before {
+  border-left-color: #E64A19 !important;
+  z-index: 100000;
+}
+.gutter .line-number.git-line-added {
+  color: #388E3C;
+}
+.gutter .line-number.git-line-modified {
+  color: #1976D2;
+}
+.syntax--git-config .syntax--constant {
+  color: #388E3C;
+}
+.syntax--git-config .syntax--boolean {
+  color: #7B1FA2;
+}
+.syntax--git-config .syntax--name.syntax--section {
+  color: #E64A19;
+}
+.syntax--git-config .syntax--name.syntax--subsection {
+  color: #ac4322;
+}
+.syntax--source.syntax--coffee .syntax--punctuation,
+.syntax--source.syntax--json .syntax--punctuation,
+.syntax--source.syntax--yaml .syntax--punctuation {
+  color: #646d71 !important;
+}
+.syntax--source.syntax--json .syntax--dictionary .syntax--string {
+  color: #1976D2;
+}
+.syntax--source.syntax--json .syntax--dictionary .syntax--value .syntax--string {
+  color: #388E3C;
+}
+.syntax--source.syntax--yaml .syntax--tag {
+  color: #1976D2 !important;
+}
+.syntax--source.syntax--yaml .syntax--string.syntax--unquoted {
+  color: #F57C00;
+}
+.syntax--source.syntax--coffee .syntax--assignment {
+  color: #E64A19 !important;
+}
+.syntax--todo,
+.syntax--fixme,
+.syntax--changed,
+.syntax--xxx,
+.syntax--note,
+.syntax--hack,
+.syntax--idea,
+.syntax--review {
+  background-color: rgba(59, 70, 75, 0.5);
+  padding: 0px 0px;
+  margin: 0px -1px;
+  border-radius: 2px;
+  border: 1px solid #3b464b;
+  z-index: 10000 !important;
+}
+.syntax--todo {
+  color: #F57C00 !important;
+}
+.syntax--fixme {
+  color: #E64A19 !important;
+}
+.syntax--changed,
+.syntax--review {
+  color: #1976D2 !important;
+}
+.syntax--note,
+.syntax--idea {
+  color: #388E3C !important;
+}
+.syntax--hack {
+  color: #F57C00 !important;
+}
+.syntax--xxx {
+  color: #622582 !important;
+}
+.spell-check-misspelling .region {
+  border-bottom: 1px dotted #b76611;
+}
+.gutter .custom-decorations {
+  background-color: none !important;
+}
+.indent-guide-improved {
+  width: 1px;
+  z-index: 1 !important;
+  position: absolute;
+}
+.indent-guide-improved {
+  background-color: #3b464b;
+}
+.indent-guide-improved.indent-guide-stack {
+  background-color: rgba(59, 70, 75, 0.6);
+}
+.indent-guide-improved.indent-guide-stack.indent-guide-active {
+  background-color: rgba(100, 109, 113, 0.6);
+}
+.syntax--source.syntax--todo {
+  background: none !important;
+  border: none !important;
+}
+.syntax--source.syntax--todo .syntax--header {
+  color: #e0e2e2 !important;
+}
+.syntax--source.syntax--todo .syntax--header .syntax--header-title {
+  color: #1d62a4;
+  font-weight: bold;
+}
+.syntax--source.syntax--todo .syntax--tasks {
+  color: #f5f5f5;
+}
+.syntax--source.syntax--todo .syntax--tasks .syntax--marker {
+  color: #b7bbbc !important;
+}
+.syntax--source.syntax--todo .syntax--attribute {
+  color: #646d71;
+}
+.syntax--source.syntax--todo .syntax--attribute-value {
+  color: #b7bbbc;
+}
+.syntax--source.syntax--todo .syntax--attribute-name {
+  color: #b76611;
+}
+.syntax--string.syntax--docstring.syntax--julia {
+  color: #b7bbbc;
+}
+pre.editor-colors-minimap {
+  background-color: rgba(36, 47, 53, 0.95);
+}
+</style>
+  </head>
+  <body class='markdown-preview'><h1>Essay 4</h1>
+<p>Josh Gribbon</p>
+<p>20171207</p>
+<p>Essay choice: 1</p>
+<p>Topic: Brain-Computer Interfaces</p>
+<hr>
+<p><a href="https://www.bloomberg.com/news/features/2017-09-07/brain-computer-interfaces-are-already-here">https://www.bloomberg.com/news/features/2017-09-07/brain-computer-interfaces-are-already-here</a></p>
+<h2>Stakeholders and impacts</h2>
+<ol>
+<li><strong>People developing the technology</strong>
+<ul>
+<li>One impact is obviously the business opportunity that comes with the new technology. With companies like Facebook and Elon Musk’s Nueralink involved, clearly there’s a serious opportunity, also indicated by many other competitors and researchers</li>
+<li>There would definitely be a pretty huge responsibility that comes with being trusted with a direct connection to someone’s brain. Some solutions involve electrods worn around an arm or on the head, but none of those signals are clear or meaningful enough to do anything more than simple actions. Much like our discussion in class about 3D printed organs, this would likely come with a slew of subsequent policies and regulations.</li>
+<li>Security decisions would be incredibly important, as this would arguably be the biggest security threat we could create. It’d be really great if you can type on your phone automatically by thinking, but it’d be pretty awful if someone could hack into the president’s brain. There could also be a situation reminiscent of the Apple back-door case a few years ago. If a “really bad guy” has a brain control chip, it would definitely be tempting to be able to send a “turn yourself in” command.</li>
+</ul>
+</li>
+<li><strong>Medical patients</strong>
+<ul>
+<li>The majority of the research for this technology has involved people that have lost a lot of their physical ability for one reason or another, but still have full control of their mind. Anything from just basic communication to a full physical range of motion could be achieved if the brain has a new way to send out signals.</li>
+<li>One of the big debates within healthcare is “pain management”. For a long time suffering was just a big part of medicine. Now we have powerful opiods to alleviate pain, but we’ve got ourselves into a bit of a mess with that too recently. I see two big applications here:
+<ul>
+<li>We would finally have a way to accurately assess pain levels. I’m a volunteer EMT and the standard is a 1-10 scale, but little kids regularly get scraped knees that are a 9, and an elderly woman could break a hip and call it a 3. This could even be tied into a system that would regulate IV speeds to maintain a certain pain maximum.</li>
+<li>The second potential application would be to control the brain and stop the pain signals. If we could just convince the brain that everything is OK then there would be no use for the drugs at all. This has a clear danger of blocking useful pain signals, but I don’t imagine this a different impact compaered to opiods.</li>
+</ul>
+</li>
+<li>Psychiatric care would have an entirely knew treatment avenue. If we go with the common model of the brain as a computer, this could let us tweak how the software is running.</li>
+</ul>
+</li>
+<li><strong>General consumers</strong>
+<ul>
+<li>Hands free everything. The end goal with this would seem to be the ultimate step up from speech recognition. Evernote would save actual thoughts which you could replay later, Amazon’s stock would have a huge spike after they release “Single-Thought Purchase”, and Google would offer free memory storage as long as they can use the memories for ad targeting.</li>
+<li>Education could change completely. If we learn by repeatedly doing to strengthen a specific neural path, then we could have that happen in any sequence. One of the biggest losses to society from a utilitarian perspectve is mental loss. Like attrition damage in a company, the hardest part is the initial training</li>
+<li>A whole new way to connect and interact with other humans, and potentially other animals. You could literally share a memory with someone. We could see an increase in compassion for various topics, similar to the effect of the “VR refugee camp experience”.</li>
+</ul>
+</li>
+</ol>
+<h2>Broad ethical concern</h2>
+<p><a href="http://www.nmsba.com/ethics">http://www.nmsba.com/ethics</a></p>
+<p>The big ethical concern and undertone of all the research related to a brain interfact device is of course all the ways it could be go wrong, interntionally and accidentally. Again similar to 3D printed organs, there is a question of responsibility for problems. If the brain chip has a big problem and destroys someone’s brain, that would be a huge offense. Then we have the security issues, where someone could send thoughts to someone or just control their brain. It’s a technology with a ton of potential, and that could go really well or really bad.</p>
+<h2>Related codes of ethics and relevance</h2>
+<p>I first tried looking for psychiatric ethics codes, since that seemed most approriate, the APA does have a code, but none of the points seemed useful here. The Neuromarketing Science and Business Association ethics codes seemed better, even though it’s not quite about this technology.</p>
+<ul>
+<li><strong>Article 2a</strong>: Neuromarketing researchers shall take all reasonable precautions to ensure that participants are in no way harmed or stressed as a result of their involvement in a Neuromarketing research project
+<ul>
+<li>We would need to keep safety paramount, as any interface could be considered a minor form of brain surgery</li>
+</ul>
+</li>
+<li><strong>Article 7e</strong>: Particular care shall be taken to maintain the data protection rights of participants when personal data is transferred from the country in which they are collected to another country. When data processing is conducted in another country, the data protection principles of this Code must be respected.
+<ul>
+<li>Security would also be incredibly important, because people could unknowingly leak info they would never even write down</li>
+</ul>
+</li>
+</ul>
+<h2>Stances</h2>
+<ol>
+<li><strong>This technology should be researched further.</strong> There are definitely the safety and security concerns, but the people that have been pushing for the research so far have been people looking to gain control of their bodies again. Similar to how we have dangerous cancer treatments that people can try as a last resort, I think this will initially be a treatment like that. Then as we learn to make it better it will be more generally adopted.</li>
+<li><strong>There is a clear danger with potential abuse.</strong> The dystopia scenario is that a super-government enslaves millions by controlling their brains, which I definitely think we should avoid. We would basically be networking a ton of the best computer we’ve ever seen, so we could have access to a whole new type of processing power. As all Spiderman fans know, with great power comes great responsibility. This is certainly no exception, but my personal opinion is that we’ll always be trying to advance technology and we’re not going to hold back just because it might go wrong.</li>
+<li><strong>A brain-to-brain interface would be revolutionary for global relations.</strong> Language barriers have often been referenced as a problem for communication and cooperation. This could even go beyond that and circumvent any prejudices we have. If you’re just talking to people brain-to-brain all that matters is what they think, and that might be all you know about them. Similar to how many people have “internet friends” that they haven’t met in person, we could eventually have people we know only through mental conversation. If you’ve seen Black Mirror there’s a great episode where two elderly ladies have a relationship through a VR mental experience as young women and fall in love. We could re-establish the “personal” feeling we lose through most digital conversation, and stay connected in new ways to people all over the world.</li>
+</ol></body>
+</html>
